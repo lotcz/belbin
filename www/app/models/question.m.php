@@ -15,7 +15,11 @@ class QuestionModel extends zModel {
 		/* paging */	new zPaging(0, 1),
 		/* orderby */	'belbin_question_index'
 		);
-		return $questions[0];
+		if (count($questions) > 0) {
+			return $questions[0];
+		} else {
+			return null;
+		}
 	}
 
 	static function loadPreviousQuestion($db, $index) {
@@ -28,7 +32,11 @@ class QuestionModel extends zModel {
 		/* paging */	new zPaging(0, 1),
 		/* orderby */	'belbin_question_index DESC'
 		);
-		return $questions[0];
+		if (count($questions) > 0) {
+			return $questions[0];
+		} else {
+			return null;
+		}
 	}
 
 	static function loadNextQuestion($db, $index) {
@@ -39,9 +47,13 @@ class QuestionModel extends zModel {
 		/* bindings */	[$index],
 		/* types */		'i',
 		/* paging */	new zPaging(0, 1),
-		/* orderby */	'belbin_question_index DESC'
+		/* orderby */	'belbin_question_index'
 		);
-		return $questions[0];
+		if (count($questions) > 0) {
+			return $questions[0];
+		} else {
+			return null;
+		}
 	}
-
+	
 }

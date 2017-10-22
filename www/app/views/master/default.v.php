@@ -31,8 +31,6 @@
 	<body>
 		<?php
 
-			$this->renderPartialView('cookies');
-
 			if ($this->isAuth()) {
 				$this->renderAdminMenu();
 			}

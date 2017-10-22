@@ -51,6 +51,7 @@ create table `belbin_results` (
        `belbin_result_test_id` INT UNSIGNED NOT NULL,
        `belbin_result_question_id` INT UNSIGNED NOT NULL,
        `belbin_result_answer_id` INT UNSIGNED NOT NULL,
+       `belbin_result_score` TINYINT UNSIGNED NOT NULL,
        
        PRIMARY KEY (`belbin_result_id`),
        CONSTRAINT `belbin_result_test_fk` FOREIGN KEY (`belbin_result_test_id`) REFERENCES `belbin_tests` (`belbin_test_id`),
@@ -71,7 +72,7 @@ CREATE VIEW viewBelbinResults AS
 DROP VIEW IF EXISTS `viewBelbinTestResultsSummary`;
   
 CREATE VIEW viewBelbinTestResultsSummary AS
-	SELECT belbin_role_id, belbin_role_name, count(*) as score
+	SELECT belbin_test_id, belbin_role_id, belbin_role_name, count(*) as score
     FROM viewBelbinResults
-    GROUP BY belbin_role_id, belbin_role_name
+    GROUP BY belbin_test_id, belbin_role_id, belbin_role_name
     ORDER BY score DESC

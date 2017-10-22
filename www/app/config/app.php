@@ -10,6 +10,6 @@
 		// should be identical with GIT branch name
 		'require_z_version' => 1.1,
 
-		'modules' => ['mysql', 'i18n', 'forms', 'admin']
+		'modules' => ['mysql', 'i18n', 'forms', 'custauth']
 
 	];

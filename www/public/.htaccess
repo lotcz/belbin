@@ -4,7 +4,7 @@
 	# Handle downloads...
     RewriteCond %{REQUEST_URI} ^/resources/ [NC]
 	RewriteCond %{REQUEST_URI} !^/resources/$ [NC]
-    RewriteRule ^resources/(.*) /resources.php?path=resources/$1 [L]
+    RewriteRule ^resources/(.*) /resources.php?path=resources/$1 [L,QSA]
 	
 	# Handle jobs...
     RewriteCond %{REQUEST_URI} ^/jobs/ [NC]
@@ -14,5 +14,5 @@
     # Handle Front Page...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^belbin/www/public/(.*) /belbin/www/public/index.php?path=$1 [L,QSA]
+    RewriteRule ^(.*) /belbin/www/public/index.php?path=$1 [L]
 </IfModule>
