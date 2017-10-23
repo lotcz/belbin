@@ -15,3 +15,4 @@
 	);
 
 	$this->setData('results', $results);
+	$this->setData('total_score', zModel::sum($results, 'score'));

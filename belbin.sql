@@ -72,7 +72,7 @@ CREATE VIEW viewBelbinResults AS
 DROP VIEW IF EXISTS `viewBelbinTestResultsSummary`;
   
 CREATE VIEW viewBelbinTestResultsSummary AS
-	SELECT belbin_test_id, belbin_role_id, belbin_role_name, count(*) as score
+	SELECT belbin_test_id, belbin_role_id, belbin_role_name, sum(belbin_result_score) as score
     FROM viewBelbinResults
     GROUP BY belbin_test_id, belbin_role_id, belbin_role_name
     ORDER BY score DESC

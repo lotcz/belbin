@@ -1,0 +1,35 @@
+.test .item {
+	margin:10px;
+  display:block;
+}
+
+.test .item .glyphicon {
+	font-size:150%;
+	color:#A5A5A5;
+}
+
+.test .item .minus-item .glyphicon:hover {
+	color:Red;
+}
+
+.test .item .plus-item .glyphicon:hover {
+	color:Green;
+}
+
+.test .item .item-count {
+	min-width:110px;
+}
+
+.test .item .item-count .glyphicon {
+	position:relative;
+	top:4px;
+}
+
+.test .item .item-count input {
+	display:inline-block;
+	position:relative;
+	top:-2px;
+	width:50px;
+	margin-left:3px;
+	margin-right:3px;
+}

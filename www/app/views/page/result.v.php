@@ -9,7 +9,7 @@
 <table>
 	<tr>
 		<th>Role</th>
-		<th>Dominance</th>
+		<th>Score</th>
 	</tr>
 
 	<?php
@@ -25,4 +25,8 @@
 
 	?>
 
+	<tr>
+		<td>Total score:</td>
+		<td><strong><?=$this->getData('total_score'); ?></strong></td>
+	</tr>
 </table>

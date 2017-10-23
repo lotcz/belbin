@@ -36,28 +36,30 @@ if ($question->is_loaded) {
 	if (z::isPost()) {
 
 		$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
-		$answered = 0;
+		$answered_score = 0;
 
 		ResultModel::deleteAllQuestionResults($this->db, $question->ival('belbin_question_id'), $test->ival('belbin_test_id'));
 
 		foreach ($answers as $answer) {
-			if (z::getInt('answer_' . $answer->val('belbin_answer_id'), 0) == 1) {
-				$answered += 1;
+			$question_score = z::getInt('answer_' . $answer->val('belbin_answer_id'), 0);
+			if ($question_score > 0) {
+				$answered_score += $question_score;
 				$result = new ResultModel($this->db);
 				$result->set('belbin_result_test_id', $test->ival('belbin_test_id'));
 				$result->set('belbin_result_question_id', $question->ival('belbin_question_id'));
 				$result->set('belbin_result_answer_id', $answer->ival('belbin_answer_id'));
+				$result->set('belbin_result_score', $question_score);
 				$result->save();
 			}
 		}
 
-		if ($answered > 0) {
+		if ($answered_score == 10) {
 			$question = QuestionModel::loadNextQuestion($this->db, $question->ival('belbin_question_index'));
 			if (!$question->is_loaded) {
 				$this->redirect(sprintf('default/default/result/%d', $test->ival('belbin_test_id')));
 			}
 		} else {
-			$this->z->messages->add('Select at least one answer!', 'error');
+			$this->z->messages->add('Distribute 10 points!', 'error');
 		}
 	}
 
