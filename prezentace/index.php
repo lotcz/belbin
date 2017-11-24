@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+	$reveal_base_url = 'http:localhost/reveal.js';
+	
+
+?><!doctype html>
 <html lang="en">
 
     <head>
@@ -14,8 +18,8 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-        <link rel="stylesheet" href="/reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="/reveal.js/css/theme/beige.css" id="theme">
+        <link rel="stylesheet" href="<?=$reveal_base_url ?>/css/reveal.css">
+        <link rel="stylesheet" href="<?=$reveal_base_url ?>/css/theme/beige.css" id="theme">
    
         <!--[if lt IE 9]>
         <script src="lib/js/html5shiv.js"></script>
@@ -39,8 +43,8 @@
 			</div>
         </div>
 
-        <script src="/reveal.js/lib/js/head.min.js"></script>
-        <script src="/reveal.js/js/reveal.js"></script>
-        <script src="/reveal.js/js/jquery-2.1.3.min.js"></script>
+        <script src="<?=$reveal_base_url ?>/lib/js/head.min.js"></script>
+        <script src="<?=$reveal_base_url ?>/js/reveal.js"></script>
+        <script src="<?=$reveal_base_url ?>/js/jquery-2.1.3.min.js"></script>
     </body>
 </html>
