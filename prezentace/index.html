@@ -29,14 +29,61 @@
 				<section>
 					<h2>Belbinův test online</h2>
 					<h3>Karel Zavadil</h3>
+					
+					<aside class="notes">
+						Dobrý den, děkuji vám, že jste přišli. Jmenuji se Karel Zavadil a budu vám povídat o svém projektu na předmět Základy webových aplikací - o aplikaci, která umožňuje vyplnit Belbinův test online.
+					</aside>
 				</section>
 				
 				<section>
 					<h2>Proč?</h2>
 					<ul>
-						<li class="fragment">kdo by používal papír a tužku 21. století?</li>
-						<li class="fragment">další</li>
+						<li>Základy projektového řízení</li>
+						<li class="fragment">Google nepomůže?</li>
+						<li class="fragment">Kdo by používal papír a tužku v 21. století?</li>
+						<li class="fragment">Lenost</li>
 					</ul>
+					
+					<aside class="notes">
+						Proč zrovna Belbinův test online?
+					</aside>
+					
+				</section>
+				
+				<section>
+					<h2>Belbinův test týmových rolí</h2>
+					
+					
+					<aside class="notes">
+						
+					</aside>
+				</section>
+				
+				<section>
+					<h2>To je vše</h2>
+					
+					<p>Na tuto prezentaci se můžete znovu podívat na webu na adrese <strong>http://belbin.zavadil.eu</strong>.</p>
+					
+					<aside class="notes">
+						A to je o mém projektu vše, děkuji za pozornost.
+					</aside>
+				</section>
+				
+				<section>
+					<h2>Reveal.js</h2>
+					
+					<h3>Pro programátory:</h3>
+					<p>https://github.com/hakimel/reveal.js</p>
+					
+					<h3>Free:</h3>
+					<p><strong>Hacker Slides</strong> app for <strong>Sandstorm</strong>(https://sandstorm.io)</p>
+					
+					<h3>Commercial:</h3>
+					<p>https://slides.com</p>
+					
+					<aside class="notes">
+						
+					</aside>
 				</section>
 				
 			</div>
@@ -47,7 +94,25 @@
         <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 		
 		<script>
-			Reveal.initialize();
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					//{ src: '/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					//{ src: '/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: '/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: '/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/reveal.js/plugin/search/search.js', async: true },
+					{ src: '/reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '/reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
 		</script>
 		
     </body>
