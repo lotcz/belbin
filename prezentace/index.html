@@ -21,6 +21,7 @@
 			.reveal section img.image {
 				border-style:none;
 				box-shadow:none;
+				background-color:transparent;
 			}
 		</style>
 		
@@ -45,14 +46,16 @@
 				<section>
 					<h2>Proč?</h2>
 					<ul>
-						<li>ZPR - Základy projektového řízení</li>
-						<li class="fragment">Google nepomůže?</li>
-						<li class="fragment">Kdo by používal papír a tužku v 21. století?</li>
-						<li class="fragment">Lenost je hybatelem pokroku</li>
+						<li>Požadavek na ZPR</li>						
+						<li>Kdo by používal papír a tužku v 21. století?</li>
+						<li>Google nepomůže!</li>
 					</ul>
 					
 					<aside class="notes">
-						Proč zrovna Belbinův test online? Je to jeden z prvních požadavků v předmětu Základy projektového řízení. Na Google nelze online verzi testu dohledat. Lenost je hybatelem lidského pokroku.
+						Proč zrovna Belbinův test online? 
+						Je to jeden z prvních požadavků v předmětu Základy projektového řízení.
+						Bohužel jediná dohledatelná verze testu je v PDF a je třeba ji vyhodnocovat s pomocí tužky a papíru.
+						Ani na Googlu nelze online verzi testu nelézt a to je co říct.
 					</aside>
 					
 				</section>
@@ -82,37 +85,62 @@
 					</aside>
 				</section>
 		
-				<section data-background="/belbin/prezentace/complicated.png" data-background-transition="zoom" >
+				<section data-background="/belbin/prezentace/complicated.png">
 									
 					<aside class="notes">
 						Asi takhle.
-						Samozřejmě, že přeháním, ale určitě by to šlo i lépe.
+						Samozřejmě, že přeháním, ale určitě by to šlo i jednodušeji.
 					</aside>
 				</section>
-									
+				
+				<section>
+					Lenost je hybatelem pokroku
+										
+					<aside class="notes">
+						I naši předkové zřejmě vymysleli kolo jen z lenosti - už je nebavilo chodit pořád všude pěšky.
+						Takže jsem byl příliš líný věnovat 10 minut vyplňování a vyhodnocování Belbinova testu 
+						s pomocí tužky a papíru a raději jsem dvě hodiny programoval, abych vytvořil prototyp
+						webové aplikace, která umožní vypracovat test rychleji.
+					</aside>
+				</section>
+				
+				<section data-background-color="#2859c8" data-transition="zoom">
+					<div style="color:White">
+						<h2 style="color:White">Vítejte v internetu</h2>
+						<img src="/belbin/prezentace/cursor.png" class="image"/>
+					</div>
+										
+					<aside class="notes">
+						Tak jako tento slide je úplně odlišný od ostatních, tak nám moderní informační technologie,
+						zejména internet, přináší kvalitativně zcela odlišnou zkušenost.
+						Nejen tedy, že vyplnění Belbinova testu bude mnohem rychlejší a snazší.
+						Bude to možné kdykoliv a odkudkoliv.
+						Výsledky půjde snadno sdílet - odkazem, emailem - například s nadřízeným nebo učitelem.
+						Z výsledků budou dostupné statistiky jako např. průměrný čas potřebný k vyplnění
+						nebo zastoupení jednotlivých rolí v rámci testované populace.						
+					</aside>
+				</section>
+				
 				<section>
 					<section>
 						<h2>To je vše</h2>
 						
-						<p>Na tuto prezentaci se můžete znovu podívat na webu na adrese:</p>
-						<strong>http://belbin.zavadil.eu</strong>
+						<p>Na tuto prezentaci se můžete kdykoliv znovu podívat:</p>
+						<a href="http://belbin.zavadil.eu">http://belbin.zavadil.eu</a>
 						
 						<aside class="notes">
-							A to je o mém projektu vše, děkuji za pozornost.
+							A to je o mém projektu vše, děkuji za pozornost. 
+							Na tuto prezentaci se můžete kdykoliv znovu podívat - samozřejmě na internetu.
 						</aside>
 					</section>
 					
 					<section>
 						<h2>Reveal.js</h2>
+						<h3><a href="https://github.com/hakimel/reveal.js">https://github.com/hakimel/reveal.js</a></h3>
+																		
+						<p>Nebo jako komerční produkt (<a href="https://slides.com">https://slides.com</a>)</p>
 						
-						<h3>Pro programátory:</h3>
-						<p>https://github.com/hakimel/reveal.js</p>
-						
-						<h3>Free:</h3>
-						<p><strong>Hacker Slides</strong> app for <strong>Sandstorm</strong>(https://sandstorm.io)</p>
-						
-						<h3>Commercial:</h3>
-						<p>https://slides.com</p>
+						<p>Existuje také aplikace <strong>Hacker Slides</strong> pro platformu <strong>Sandstorm</strong> (<a href="https://sandstorm.io">https://sandstorm.io</a>)</p>
 						
 						<aside class="notes">
 							
@@ -120,8 +148,6 @@
 					</section>
 				
 				</section>
-				
-				
 				
 			</div>
         </div>
@@ -132,12 +158,13 @@
 		
 		<script>
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
 
 				transition: 'convex', // none/fade/slide/convex/concave/zoom
+				backgroundTransition: 'zoom',
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
