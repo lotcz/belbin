@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="cs">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Belbinův test online</title>
+
+        <meta name="description" content="Zadání projektu na předmět ZWA">
+        <meta name="author" content="Karel Zavadil">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        
+    </head>
+
+    <body>
+        <div class="container">
+			<h1>Belbinův test online</h1>
+			<h3>Zadání semestrální práce</h3>
+			
+			<p>
+				<strong>Cíl:</strong>
+			</p>
+			
+			<p>
+				Vytvořit webovou aplikaci s online verzí Belbinova testu.
+			</p>
+
+			<p>
+				<strong>Popis:</strong>		
+			</p>
+			<p>
+				Uživatelé odpoví na sérii otázek a poté se jim zobrazí výsledek - dominance týmových rolí. 
+				Budou mít také možnost nechat si zaslat výsledky na email. 
+				Aplikace si (anonymní) výsledky testování uloží do databáze a vedle samotného testu budou 
+				na webových stránkách přístupné i statistiky jako např. průměrný čas potřebný k vyplnění testu 
+				nebo četnost jednotlivých rolí v rámci testované skupiny. 
+				Webové stránky také budou obsahovat vysvětlení principu Belbinova testu s odkazy na relevantní zdroje.
+			</p>
+			
+			<p>
+				<strong>Uživatelské role:</strong>
+					
+				<ul>
+					<li>nepřihlášení uživatelé</li>
+					<li>správci</li>				
+				</ul>
+			</p>
+
+			<p>
+				<strong>Veřejné stránky (pro nepřihlášené):</strong>		
+			</p>
+			<p>
+				<ul>
+					<li>titulní stránka (přivítání návštěvníka, odkazy na zahájení testu a ostatní stránky)</li>
+					<li>stránka s otázkou Belbinova testu (zobrazí vždy jednu testovou otázku a výběr s odpověďmi, po zodpovězení přesměruje návštěvníka na další otázku, pokud to nebyla poslední)</li>
+					<li>nepovinné údaje pro statistické účely (pohlaví, věk, ...)</li>
+					<li>vyhodnocení testu</li>
+					<li>odeslání na email (návštěvník vyplní emailovou adresu, na kterou chce výsledek zaslat v PDF souboru)</li>
+					<li>statistiky (celkový počet testovaných osob, průměrná doba k dokončení testu, dominance jednotlicých rolí, ...)</li>
+				</ul>
+			</p>
+			
+			<p>
+				<strong>Správcovská část:</strong>		
+			</p>
+			<p>
+				<ul>
+					<li>přihlášení</li>
+					<li>přehled vyplněných testů</li>
+					<li>detail testu (možnost smazat výsledky testu nebo editovat statistické údaje)</li>
+					<li>přehled otázek</li>
+					<li>detail otázky (smazat/editovat, zde se také definují možné odpovědi na editovanou otázku)</li>
+				</ul>
+			</p>
+			
+			<p>
+				<strong>Použité technologie:</strong>				
+			</p>
+			<p>
+				<ul>
+					<li>LAMP stack (linux, apache, mySQL, PHP)</li>
+					<li>zEngine (jednoduchý PHP framework vlastní výroby)</li>
+					<li>HTML 5</li>
+					<li>CSS3 + Bootstrap</li>
+					<li>javascript + jQuery</li>
+				</ul>
+			</p>
+		
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		
+    </body>
+</html>
