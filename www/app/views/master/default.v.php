@@ -16,9 +16,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 		<?php
-			$this->renderCSSIncludes();
-			$this->renderLESSIncludes();
-			$this->renderJSIncludes_head();
+			$this->renderIncludes('head');			
 		?>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,7 +38,8 @@
 		?>
 
 		<?php
-			$this->renderJSIncludes();
+			$this->renderIncludes('default');
+			$this->renderIncludes('bottom');
 		?>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</body>

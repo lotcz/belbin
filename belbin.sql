@@ -1,6 +1,8 @@
+/*
 DROP DATABASE IF EXISTS belbin;
 CREATE DATABASE belbin DEFAULT char set utf8;
 USE belbin;
+*/
 
 /*
 	now run zEngine.sql
@@ -17,8 +19,8 @@ create table `belbin_roles` (
 create table `belbin_tests` (
   `belbin_test_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `belbin_test_customer_id` INT UNSIGNED NOT NULL,
-  `belbin_test_start_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `belbin_test_end_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `belbin_test_start_date` DATETIME NOT NULL,
+  `belbin_test_end_date` DATETIME NULL,
 
   PRIMARY KEY (`belbin_test_id`),
   CONSTRAINT `belbin_test_customer_fk`

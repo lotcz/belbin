@@ -18,6 +18,7 @@
 	} else {
 		$test = new TestModel($this->db);
 		$test->set('belbin_test_customer_id', $customer_id);
+		$test->set('belbin_test_start_date', zSqlQuery::mysqlDatetime());
 		$test->save();
 	}
 
@@ -33,13 +34,14 @@
 	}
 
 if ($question->is_loaded) {
-	if (z::isPost()) {
-
-		$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
+	
+	$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
+	
+	if (z::isPost()) {		
+	
 		$answered_score = 0;
-
-		ResultModel::deleteAllQuestionResults($this->db, $question->ival('belbin_question_id'), $test->ival('belbin_test_id'));
-
+		$results = [];
+				
 		foreach ($answers as $answer) {
 			$question_score = z::getInt('answer_' . $answer->val('belbin_answer_id'), 0);
 			if ($question_score > 0) {
@@ -49,25 +51,39 @@ if ($question->is_loaded) {
 				$result->set('belbin_result_question_id', $question->ival('belbin_question_id'));
 				$result->set('belbin_result_answer_id', $answer->ival('belbin_answer_id'));
 				$result->set('belbin_result_score', $question_score);
+				$results[] = $result;
+			}
+		}		
+
+		//z::debug($answered_score);		
+		
+		if ($answered_score == TestModel::$score_per_question) {
+			ResultModel::deleteAllQuestionResults($this->db, $question->ival('belbin_question_id'), $test->ival('belbin_test_id'));
+			foreach ($results as $result) {				
 				$result->save();
 			}
-		}
-
-		if ($answered_score == 10) {
-			$question = QuestionModel::loadNextQuestion($this->db, $question->ival('belbin_question_index'));
+			$question = QuestionModel::loadNextQuestion($this->db, $question->ival('belbin_question_index'));			
+	
 			if (!$question->is_loaded) {
+				$test->set('belbin_test_end_date', zSqlQuery::mysqlDatetime());
+				$test->save();
 				$this->redirect(sprintf('default/default/result/%d', $test->ival('belbin_test_id')));
+			} else {
+				$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
 			}
 		} else {
-			$this->z->messages->add('Distribute 10 points!', 'error');
+			$this->z->messages->add($this->t('Distribute exactly %d points!', TestModel::$score_per_question), 'error');
 		}
 	}
 
 	$prev_question = QuestionModel::loadPreviousQuestion($this->db, $question->ival('belbin_question_index'));
 	$this->setPageTitle($this->t('Question %d', $question->ival('belbin_question_index')));
-	$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
 	$this->setData('test', $test);
 	$this->setData('question', $question);
 	$this->setData('answers', $answers);
 	$this->setData('prev_question', $prev_question);
+	$this->insertJS(['score_per_question' => TestModel::$score_per_question]);
+	
+} else {
+	throw new Exception(sprintf('Cannot load question! Requested question ID: %d', $question_id));
 }
