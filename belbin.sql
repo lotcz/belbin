@@ -77,4 +77,13 @@ CREATE VIEW viewBelbinTestResultsSummary AS
 	SELECT belbin_test_id, belbin_role_id, belbin_role_name, sum(belbin_result_score) as score
     FROM viewBelbinResults
     GROUP BY belbin_test_id, belbin_role_id, belbin_role_name
-    ORDER BY score DESC
+    ORDER BY score DESC;
+
+DROP VIEW IF EXISTS `viewBelbinTestStatistics`;
+  
+CREATE VIEW viewBelbinTestStatistics AS
+	SELECT belbin_role_id, belbin_role_name, sum(belbin_result_score) as score
+    FROM viewBelbinResults
+    WHERE belbin_test_end_date is not null
+    GROUP BY belbin_role_id, belbin_role_name
+    ORDER BY score DESC;

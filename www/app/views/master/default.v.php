@@ -6,14 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<meta name="description" content="">
+		<meta name="description" content="Belbinův test online.">
 		<meta name="author" content="Karel Zavadil">
 		<link rel="icon" href="/favicon.ico">
 
 		<title><?=$this->getFullPageTitle() ?></title>
-
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 		<?php
 			$this->renderIncludes('head');			
@@ -27,20 +24,49 @@
 	</head>
 
 	<body>
-		<?php
+	
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+		  <a class="navbar-brand" href="<?=$this->url('') ?>">Domů</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
 
-			if ($this->isAuth()) {
-				$this->renderAdminMenu();
-			}
+		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+			  <li class="nav-item active">
+				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link disabled" href="#">Disabled</a>
+			  </li>
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+				<div class="dropdown-menu" aria-labelledby="dropdown01">
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			  </li>
+			</ul>			
+		  </div>
+		</nav>
+		
+		<main role="main">
+			<?php
+				$this->renderMainView();
+			?>
+		</main>		
 
-			$this->renderMainView();
-
-		?>
-
+		<footer class="container">
+		  <p>&copy; Karel Zavadil 2018. Z-engine v. <strong><?=$this->z->version ?></strong>. Application version <strong><?=$this->z->app->version ?></strong>.</p>
+		</footer>
+	
 		<?php
 			$this->renderIncludes('default');
 			$this->renderIncludes('bottom');
 		?>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</body>
 </html>

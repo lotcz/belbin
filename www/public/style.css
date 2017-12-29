@@ -1,6 +1,37 @@
+:root {
+  --dark-bg-color: darkslategray;
+  --dark-text-color: white;  
+  --light-bg-color: lightseagreen;
+  --light-text-color: white;
+  --default-bg-color: white;
+  --default-text-color: #303030;  
+}
+
+body {
+  padding-top: 3.5rem;
+  background-color: var(--default-bg-color);
+  color: var(--default-text-color);
+}
+
+nav.navbar,
+.btn-dark {
+	background-color: var(--dark-bg-color);
+	color: var(--dark-text-color);
+}
+
+.jumbotron,
+.btn-light {
+	background-color: var(--light-bg-color);
+	color: var(--light-text-color);
+}
+
+.jumbotron {
+	padding:2rem;
+}
+
 .test .item {
 	margin:10px;
-  display:block;
+	display:block;
 }
 
 .test .item .glyphicon {
