@@ -1,6 +1,11 @@
-<h1 class="page-title"><?=$this->data['page_title'] ?></h1>
+<div class="container">
+	
+	<h1 class="page-title display-4"><?=$this->data['page_title'] ?></h1>
+	<hr>
+	
+	<?php
+		$this->renderPartialView('messages');
+		$this->renderPageView();
+	?>
 
-<?php
-	$this->renderPartialView('messages');
-	$this->renderPageView();
-?>
+</div>

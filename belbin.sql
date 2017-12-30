@@ -8,9 +8,12 @@ USE belbin;
 	now run zEngine.sql
 */
 
+USE belbin;
+
 create table `belbin_roles` (
        `belbin_role_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
        `belbin_role_name` varchar(100),
+       `belbin_role_color` varchar(20),
        `belbin_role_description` text,
        
        PRIMARY KEY (`belbin_role_id`)
@@ -82,8 +85,8 @@ CREATE VIEW viewBelbinTestResultsSummary AS
 DROP VIEW IF EXISTS `viewBelbinTestStatistics`;
   
 CREATE VIEW viewBelbinTestStatistics AS
-	SELECT belbin_role_id, belbin_role_name, sum(belbin_result_score) as score
+	SELECT belbin_role_id, belbin_role_name, belbin_role_color, sum(belbin_result_score) as score
     FROM viewBelbinResults
     WHERE belbin_test_end_date is not null
-    GROUP BY belbin_role_id, belbin_role_name
+    GROUP BY belbin_role_id, belbin_role_name, belbin_role_color
     ORDER BY score DESC;

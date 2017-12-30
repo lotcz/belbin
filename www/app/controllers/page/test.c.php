@@ -77,12 +77,13 @@ if ($question->is_loaded) {
 	}
 
 	$prev_question = QuestionModel::loadPreviousQuestion($this->db, $question->ival('belbin_question_index'));
-	$this->setPageTitle($this->t('Question %d', $question->ival('belbin_question_index')));
+	$this->setPageTitle(sprintf('Otázka č. %d', $question->ival('belbin_question_index')));
 	$this->setData('test', $test);
 	$this->setData('question', $question);
 	$this->setData('answers', $answers);
 	$this->setData('prev_question', $prev_question);
 	$this->insertJS(['score_per_question' => TestModel::$score_per_question]);
+	$this->includeJS('belbin.js', false);
 	
 } else {
 	throw new Exception(sprintf('Cannot load question! Requested question ID: %d', $question_id));

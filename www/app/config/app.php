@@ -19,8 +19,7 @@
 			['https://code.jquery.com/jquery-3.2.1.slim.min.js', true, 'link_js', 'head'],
 			['https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', true, 'link_js', 'bottom'],
 			['https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js', true, 'link_js', 'bottom'],
-			['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js', true, 'link_js', 'bottom'],
-			['belbin.js', false, 'link_js', 'bottom']
+			['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js', true, 'link_js', 'bottom']			
 		]
 
 	];

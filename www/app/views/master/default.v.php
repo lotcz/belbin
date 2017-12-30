@@ -61,7 +61,8 @@
 		</main>		
 
 		<footer class="container">
-		  <p>&copy; Karel Zavadil 2018. Z-engine v. <strong><?=$this->z->version ?></strong>. Application version <strong><?=$this->z->app->version ?></strong>.</p>
+			<hr>
+			<p>&copy; Karel Zavadil 2018. Z-engine v. <strong><?=$this->z->version ?></strong>. Application version <strong><?=$this->z->app->version ?></strong>.</p>
 		</footer>
 	
 		<?php

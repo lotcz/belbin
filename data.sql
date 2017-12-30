@@ -1,13 +1,15 @@
-insert into belbin_roles (belbin_role_name) values ('Inovátor');
-insert into belbin_roles (belbin_role_name) values ('Všudybyl, vyhledavač');
-insert into belbin_roles (belbin_role_name) values ('Koordinátor');
-insert into belbin_roles (belbin_role_name) values ('Formovač');
-insert into belbin_roles (belbin_role_name) values ('Analytik');
-insert into belbin_roles (belbin_role_name) values ('Stmelovač');
-insert into belbin_roles (belbin_role_name) values ('Realizátor');
-insert into belbin_roles (belbin_role_name) values ('Dotahovač');
-insert into belbin_roles (belbin_role_name) values ('Specialista');
-insert into belbin_roles (belbin_role_name) values ('Neutr. body');
+USE belbin;
+
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Inovátor', 'Jeho silnou stránkou je především to, že je tvůrčí, nápaditý a neortodoxní. Dokáže řešit náročné problémy. Přípustnou slabinou této týmové role je ignorace podružnosti. Je velmi zaujatý vlastními myšlenkami na úkor efektivní komunikace.', 'CadetBlue');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Vyhledavač zdrojů', 'Je nadšený a komunikativní extrovert. Objevuje příležitosti. Rozvíjí kontakty. Jeho přípustnou slabinou je nadměrný optimismus. Může ztratit zájem po opadnutí počátečního nadšení.', 'Coral');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Koordinátor', 'Je vyzrálý a sebejistý. Vyjasňuje cíle. Dává lidi dohromady, aby podpořil týmovou diskusi. Může se zdát, že manipuluje. Usnadňuje si osobní práci.', 'CornflowerBlue');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Formovač', 'Je vyzrálý a sebejistý. Vyjasňuje cíle. Dává lidi dohromady, aby podpořil týmovou diskusi. Může se zdát, že manipuluje. Usnadňuje si osobní práci.', 'Crimson');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Analytik', 'Je vážně založený, je stratég a má vysoké nároky. Vidí všechny možnosti. Má přesný úsudek. Může mu chybět hnací síla a schopnost inspirovat ostatní.', 'DarkGoldenRod');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Stmelovač', 'Hraje roli orientovanou na vztahy a podporu. Je to velmi populární typ a často se s ním setkáváme mezi vrcholovými manažery, neboť je velmi společenský, s malými potřebami dominantnosti. TP podporuje týmového ducha, zlepšuje interpersonální komunikaci a minimalizuje konflikty mezi členy týmu. Může být nerozhodný v krizových situacích.', 'DarkOliveGreen');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Realizátor', 'Je disciplinovaný, spolehlivý, konzervativní v návycích. Má schopnost činit praktické kroky a akce. Může mu chybět flexibilita a nemusí si všímat nevyzkoušených myšlenek.', 'DarkSlateBlue');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Dotahovač', 'Dotahovači jsou známí vyzýváním k výkonu, dynamickým vystupováním i prožíváním, daří se jim pod tlakem. Jsou průbojní a mají odvahu překonávat překážky. Mohou mít sklony provokovat a druhé zraňovat.', 'ForestGreen');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Specialista', 'Specialisté jsou soustředěni na jedinou věc, jsou iniciativní a zaměření na svou oblast. Poskytují vědomosti a dovednosti, které jsou vzácné. Mohou přispívat pouze ve vymezené oblasti a mít sklon zaobírat se pouze odbornými záležitostmi.', 'IndianRed');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Neutrální body', 'Toto není týmová role. V každé otázce je jedna odpověď, která není spojena s žádnou rolí. Body přidělené této odpovědi jsou pak započteny jako neutrální.', 'DarkGray');
 
 insert into belbin_questions (belbin_question_index, belbin_question_text) values (1, 'Čím mohu být prospěšný:');
 insert into belbin_questions (belbin_question_index, belbin_question_text) values (2, 'Kdybych měl nedostatky v týmové práci, byly by to nejspíše:');
