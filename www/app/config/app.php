@@ -11,7 +11,7 @@
 		'require_z_version' => 1.1,
 
 		// list of modules that will be automatically loaded
-		'modules' => ['mysql', 'i18n', 'forms', 'custauth'],
+		'modules' => ['mysql', 'admin', 'menu', 'forms', 'custauth'],
 		
 		'includes' => [
 			['https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css', true, 'link_css', 'head'],

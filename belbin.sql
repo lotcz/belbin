@@ -67,26 +67,37 @@ create table `belbin_results` (
 DROP VIEW IF EXISTS `viewBelbinResults`;
   
 CREATE VIEW viewBelbinResults AS
-	SELECT *
+	SELECT t.belbin_test_id as test_id, a.belbin_answer_role_id as role_id, r.belbin_result_score as score
     FROM belbin_results r    
     JOIN belbin_tests t ON (t.belbin_test_id = r.belbin_result_test_id)
-    JOIN belbin_questions q ON (q.belbin_question_id = r.belbin_result_question_id)
     JOIN belbin_answers a ON (a.belbin_answer_id = r.belbin_result_answer_id)
-    JOIN belbin_roles roles ON (roles.belbin_role_id = a.belbin_answer_role_id);
+    WHERE t.belbin_test_end_date is not null;
     
 DROP VIEW IF EXISTS `viewBelbinTestResultsSummary`;
   
 CREATE VIEW viewBelbinTestResultsSummary AS
-	SELECT belbin_test_id, belbin_role_id, belbin_role_name, sum(belbin_result_score) as score
+	SELECT test_id, role_id, sum(score) as score
     FROM viewBelbinResults
-    GROUP BY belbin_test_id, belbin_role_id, belbin_role_name
-    ORDER BY score DESC;
+    GROUP BY test_id, role_id;
 
-DROP VIEW IF EXISTS `viewBelbinTestStatistics`;
+DROP VIEW IF EXISTS `viewBelbinRoleResultsSummary`;
   
-CREATE VIEW viewBelbinTestStatistics AS
-	SELECT belbin_role_id, belbin_role_name, belbin_role_color, sum(belbin_result_score) as score
+CREATE VIEW viewBelbinRoleResultsSummary AS
+	SELECT role_id, sum(score) as score
     FROM viewBelbinResults
-    WHERE belbin_test_end_date is not null
-    GROUP BY belbin_role_id, belbin_role_name, belbin_role_color
-    ORDER BY score DESC;
+    GROUP BY role_id;
+
+DROP VIEW IF EXISTS `viewBelbinTestResults`;
+  
+CREATE VIEW viewBelbinTestResults AS
+	SELECT roles.belbin_role_id, roles.belbin_role_name, roles.belbin_role_color, tests.belbin_test_id, coalesce(results.score, 0) as score
+    FROM belbin_roles roles
+    INNER JOIN belbin_tests tests
+    LEFT OUTER JOIN viewBelbinTestResultsSummary results ON (roles.belbin_role_id = results.role_id and tests.belbin_test_id = results.test_id);
+
+DROP VIEW IF EXISTS `viewBelbinResultsStatistics`;
+  
+CREATE VIEW viewBelbinResultsStatistics AS
+	SELECT roles.belbin_role_id, roles.belbin_role_name, roles.belbin_role_color, coalesce(results.score, 0) as score
+    FROM belbin_roles roles    
+    LEFT OUTER JOIN viewBelbinRoleResultsSummary results ON (roles.belbin_role_id = results.role_id);

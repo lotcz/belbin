@@ -1,14 +1,10 @@
 <?php
-	$this->setPageTitle('Sign In');
-
-	$this->z->core->includeJS('resources/forms.js');
-
-	if ($this->isPost()) {
-		if ($this->z->custauth->login($this->get('email'), $this->get('password'))) {
-			$this->redirectBack();
+	$this->setPageTitle('Přihlášení');
+	
+	if (z::isPost()) {
+		if ($this->z->custauth->login(z::get('email'), z::get('password'))) {
+			$this->redirectBack('profil');
 		} else {
-			$this->z->messages->error($this->t('Login incorrect!'));
+			$this->z->messages->error($this->t('Chybný email nebo heslo!'));
 		}
 	}
-
-	$page_title	= $this->t('Sign In');

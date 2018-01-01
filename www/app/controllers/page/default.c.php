@@ -6,7 +6,7 @@
 	
 	$statistics = zModel::Select(
 	/* db */		$this->db,
-	/* table */		'viewBelbinTestStatistics',
+	/* table */		'viewBelbinResultsStatistics',
 	/* where */		null,
 	/* bindings */	null,
 	/* types */		null,
@@ -16,8 +16,13 @@
 	
 	$this->insertJS(
 		[
-			'chart_values' => zModel::columnAsArray($statistics, 'score'),
-			'chart_colors' => zModel::columnAsArray($statistics, 'belbin_role_color'),
-			'chart_labels' => zModel::columnAsArray($statistics, 'belbin_role_name'),
+			'chart_data' => [
+				'datasets' => [[
+					'data' => zModel::columnAsArray($statistics, 'score', 'i'),
+					'backgroundColor' => zModel::columnAsArray($statistics, 'belbin_role_color'),
+					'borderWidth' => 0
+				]],				
+				'labels' => zModel::columnAsArray($statistics, 'belbin_role_name')
+			]
 		]
 	);

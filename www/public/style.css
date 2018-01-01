@@ -103,3 +103,25 @@ nav.navbar,
 	margin:0;
 	padding:0;
 }
+
+.test-results td,
+.test-results th {
+	padding:2px 5px;
+}
+
+/* FORMS */
+
+.form-validation {
+  display: none;
+  color: red;
+  margin-top: 10px;
+}
+
+.form-button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-buttons {
+  display: block;
+}

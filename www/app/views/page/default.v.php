@@ -18,24 +18,16 @@ Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše domi
 		<p>
 			<canvas id="statistics_chart"></canvas>
 			<script>					
-				$(function () {
-
-					var data = {
-						datasets: [{
-							data: chart_values,
-							backgroundColor: chart_colors
-						}],
-					
-						labels: chart_labels
-					}
-					
+				$(function () {					
 					var options = Chart.defaults.pie;
-				
+					options.animation.animateRotate = false;
+					options.legend.position = 'bottom';
+					
 					var myPieChart = new Chart(
 						'statistics_chart',
 						{
 							type: 'pie',
-							data: data,
+							data: chart_data,
 							options: options
 						}
 					);
@@ -55,6 +47,6 @@ Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše domi
 		<h2>O testu</h2>
 		<p>Autorem testu je britský výzkumník a teoretik managementu Meredith Belbin, 
 		nejlépe známý pro jeho práci o manažerských týmech.</p>
-		<p><a class="btn btn-primary" href="meredith-belbin" role="button">Více &raquo;</a></p>
+		<p><a class="btn btn-primary" href="<?=$this->url('o-testu');?>" role="button">Více &raquo;</a></p>
 	</div>		
 </div>
