@@ -36,7 +36,7 @@
 if ($question->is_loaded) {
 	
 	$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
-	
+			
 	if (z::isPost()) {		
 	
 		$answered_score = 0;
@@ -76,6 +76,17 @@ if ($question->is_loaded) {
 		}
 	}
 
+	// set answer score if this question was already answered
+	$existing_results = ResultModel::loadAllForTestQuestion($this->db, $test->ival('belbin_test_id'), $question->ival('belbin_question_id'));	
+	foreach ($answers as $answer) {
+		$existing = zModel::find($existing_results, 'belbin_result_answer_id', $answer->ival('belbin_answer_id'));
+		if (isset($existing)) {
+			$answer->set('existing_score', $existing->val('belbin_result_score'));
+		} else {
+			$answer->set('existing_score', 0);
+		}		
+	}
+	
 	$prev_question = QuestionModel::loadPreviousQuestion($this->db, $question->ival('belbin_question_index'));
 	$this->setPageTitle(sprintf('Otázka č. %d', $question->ival('belbin_question_index')));
 	$this->setData('test', $test);

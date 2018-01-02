@@ -24,7 +24,7 @@
 
 <script>	
 	
-	$(function () {
+	function initCharts() {
 		var charts = [];
 		var chart_options = Chart.defaults.pie;
 		chart_options.tooltips.enabled = false;
@@ -42,5 +42,7 @@
 			));
 		}	
 		
-	});
+	}
+	
+	document.body.addEventListener('load', initCharts, true);
 </script>

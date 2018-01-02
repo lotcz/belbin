@@ -18,7 +18,7 @@ Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše domi
 		<p>
 			<canvas id="statistics_chart"></canvas>
 			<script>					
-				$(function () {					
+				function initChart() {					
 					var options = Chart.defaults.pie;
 					options.animation.animateRotate = false;
 					options.legend.position = 'bottom';
@@ -31,7 +31,8 @@ Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše domi
 							options: options
 						}
 					);
-				});
+				}
+				document.body.addEventListener('load', initChart, true);
 			</script>
 		</p>			
 	</div>		

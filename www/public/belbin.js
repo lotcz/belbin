@@ -33,7 +33,7 @@ function getTotalScore() {
   return sum;
 }
 
-function updateTotalScore(score) {  
+function updateTotalScore() {  
 	var score = getTotalScore();
 	var remaining = score_per_question - score;
 	$('#remaining_points').html(remaining);
@@ -69,3 +69,7 @@ function plusItem(id) {
 	}
 	setItemCount(id, c);	
 }
+
+$(function() {
+	updateTotalScore();
+});

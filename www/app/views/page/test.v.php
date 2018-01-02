@@ -23,7 +23,7 @@
 					<div class="row item">
 						
 						<div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 item-count">
-							<div class="item-badge-wrapper"><div id="item_badge_<?=$answer->val('belbin_answer_id') ?>" class="item-badge" ></div></div><a onclick="javascript:minusItem(<?=$answer->val('belbin_answer_id') ?>);return false;" href="#" class="minus-item btn btn-danger"><span>-</span></a><input id="answer_<?=$answer->val('belbin_answer_id') ?>" name="answer_<?=$answer->val('belbin_answer_id') ?>" type="text" oninput="javascript:updateItem(<?=$answer->val('belbin_answer_id') ?>);return false;" maxlength="2" class="form-control answer-score-input" value="0"><a onclick="javascript:plusItem(<?=$answer->val('belbin_answer_id') ?>);return false;" href="#" class="plus-item btn btn-success"><span>+</span></a>
+							<div class="item-badge-wrapper"><div id="item_badge_<?=$answer->val('belbin_answer_id') ?>" class="item-badge" ></div></div><a onclick="javascript:minusItem(<?=$answer->val('belbin_answer_id') ?>);return false;" href="#" class="minus-item btn btn-danger"><span>-</span></a><input id="answer_<?=$answer->val('belbin_answer_id') ?>" name="answer_<?=$answer->val('belbin_answer_id') ?>" type="text" oninput="javascript:updateItem(<?=$answer->val('belbin_answer_id') ?>);return false;" maxlength="2" class="form-control answer-score-input" value="<?=$answer->val('existing_score') ?>"><a onclick="javascript:plusItem(<?=$answer->val('belbin_answer_id') ?>);return false;" href="#" class="plus-item btn btn-success"><span>+</span></a>
 						</div>
 						
 						<div class="col-sm-8 col-md-9 col-lg-9 col-xl-10 item-label">
@@ -40,12 +40,13 @@
 
 	<p>
 		Zbývá rozdělit <strong id="remaining_points"><?=TestModel::$score_per_question ?></strong> z <strong><?=TestModel::$score_per_question ?></strong>-ti bodů.
-		<div class="progress">
-			<div id="question_progress" class="progress-bar bg-success" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
 	</p>
+	
+	<div class="progress my-2">
+		<div id="question_progress" class="progress-bar bg-success" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
 
-	<div class="row item">						
+	<div class="row item my-2">						
 		<div class="col-md-6">
 			<?php
 				if (isset($prev_question)) {

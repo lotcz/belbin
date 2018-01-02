@@ -34,7 +34,7 @@
 	<div class="col-md-6">
 		<canvas id="test_chart"></canvas>
 		<script>					
-			$(function () {					
+			function initChart(e) {
 				var options = Chart.defaults.pie;				
 				options.tooltips.enabled = false;
 				options.legend.display = false;
@@ -48,7 +48,9 @@
 						options: options
 					}
 				);
-			});
+			}
+			
+			document.body.addEventListener('load', initChart, true);
 		</script>		
 	</div>
 </div>
