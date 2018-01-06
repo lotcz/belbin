@@ -101,9 +101,9 @@
 			?>
 		</main>		
 
-		<footer class="container">
+		<footer class="container text-right">
 			<hr>
-			<p>&copy; Karel Zavadil 2018. Z-engine v. <strong><?=$this->z->version ?></strong>. Application version <strong><?=$this->z->app->version ?></strong>.</p>
+			<p>&copy; Karel Zavadil 2018.</p>
 		</footer>
 	
 		<?php

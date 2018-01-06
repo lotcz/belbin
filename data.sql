@@ -5,7 +5,7 @@ insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role
 insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Koordinátor', 'Je vyzrálý a sebejistý. Vyjasňuje cíle. Dává lidi dohromady, aby podpořil týmovou diskusi. Může se zdát, že manipuluje. Usnadňuje si osobní práci.', 'CornflowerBlue');
 insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Formovač', 'Je vyzrálý a sebejistý. Vyjasňuje cíle. Dává lidi dohromady, aby podpořil týmovou diskusi. Může se zdát, že manipuluje. Usnadňuje si osobní práci.', 'Crimson');
 insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Analytik', 'Je vážně založený, je stratég a má vysoké nároky. Vidí všechny možnosti. Má přesný úsudek. Může mu chybět hnací síla a schopnost inspirovat ostatní.', 'DarkGoldenRod');
-insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Stmelovač', 'Hraje roli orientovanou na vztahy a podporu. Je to velmi populární typ a často se s ním setkáváme mezi vrcholovými manažery, neboť je velmi společenský, s malými potřebami dominantnosti. TP podporuje týmového ducha, zlepšuje interpersonální komunikaci a minimalizuje konflikty mezi členy týmu. Může být nerozhodný v krizových situacích.', 'DarkOliveGreen');
+insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Stmelovač', 'Hraje roli orientovanou na vztahy a podporu. Je to velmi populární typ a často se s ním setkáváme mezi vrcholovými manažery, neboť je velmi společenský, s malými potřebami dominantnosti. Stmelovač podporuje týmového ducha, zlepšuje interpersonální komunikaci a minimalizuje konflikty mezi členy týmu. Může být nerozhodný v krizových situacích.', 'DarkOliveGreen');
 insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Realizátor', 'Je disciplinovaný, spolehlivý, konzervativní v návycích. Má schopnost činit praktické kroky a akce. Může mu chybět flexibilita a nemusí si všímat nevyzkoušených myšlenek.', 'DarkSlateBlue');
 insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Dotahovač', 'Dotahovači jsou známí vyzýváním k výkonu, dynamickým vystupováním i prožíváním, daří se jim pod tlakem. Jsou průbojní a mají odvahu překonávat překážky. Mohou mít sklony provokovat a druhé zraňovat.', 'ForestGreen');
 insert into belbin_roles (belbin_role_name, belbin_role_description, belbin_role_color) values ('Specialista', 'Specialisté jsou soustředěni na jedinou věc, jsou iniciativní a zaměření na svou oblast. Poskytují vědomosti a dovednosti, které jsou vzácné. Mohou přispívat pouze ve vymezené oblasti a mít sklon zaobírat se pouze odbornými záležitostmi.', 'IndianRed');
@@ -15,9 +15,9 @@ insert into belbin_questions (belbin_question_index, belbin_question_text) value
 insert into belbin_questions (belbin_question_index, belbin_question_text) values (2, 'Kdybych měl nedostatky v týmové práci, byly by to nejspíše:');
 insert into belbin_questions (belbin_question_index, belbin_question_text) values (3, 'Když spolupracuji na nějakém projektu s jinými lidmi:');
 insert into belbin_questions (belbin_question_index, belbin_question_text) values (4, 'Můj charakteristický přístup ke skupinové práci je, že:');
-insert into belbin_questions (belbin_question_index, belbin_question_text) values (5, 'Práce mě těší, protože');
-insert into belbin_questions (belbin_question_index, belbin_question_text) values (6, 'Když dostanu obtížný úkol, který je nutno splnit v omezeném čase a s neznámými lidmi');
-insert into belbin_questions (belbin_question_index, belbin_question_text) values (7, 'Ve vztahu k problémům, v nichž jsem zaangažován, při práci ve skupině');
+insert into belbin_questions (belbin_question_index, belbin_question_text) values (5, 'Práce mě těší, protože:');
+insert into belbin_questions (belbin_question_index, belbin_question_text) values (6, 'Když dostanu obtížný úkol, který je nutno splnit v omezeném čase a s neznámými lidmi:');
+insert into belbin_questions (belbin_question_index, belbin_question_text) values (7, 'Ve vztahu k problémům, v nichž jsem zaangažován, při práci ve skupině:');
  
 /* I. */
 insert into belbin_answers (belbin_answer_question_id, belbin_answer_index, belbin_answer_text, belbin_answer_role_id) values (1, 1, 'Myslím, že si dokážu rychle všimnout nových příležitostí a včas jich využít.', 2); 
@@ -102,10 +102,3 @@ insert into belbin_answers (belbin_answer_question_id, belbin_answer_index, belb
 insert into belbin_answers (belbin_answer_question_id, belbin_answer_index, belbin_answer_text, belbin_answer_role_id) values (7, 8, 'Myslím si, že mi ostatní dávají prostor pro to, abych se vyjádřil.', 10);
 insert into belbin_answers (belbin_answer_question_id, belbin_answer_index, belbin_answer_text, belbin_answer_role_id) values (7, 9, 'Často mám pocit, že ztrácím čas a že bych to sám udělal lépe.', 9);
 insert into belbin_answers (belbin_answer_question_id, belbin_answer_index, belbin_answer_text, belbin_answer_role_id) values (7, 10, 'Váhám se postavit za svůj názor, vyjádřit jej před lidmi, kteří mají moc nebo s kterými se obtížně vychází.', 6);
-
-
-select * from belbin_answers
-order by belbin_answer_question_id, belbin_answer_index;
-
-select belbin_answer_question_id, belbin_answer_role_id, count(*) from belbin_answers
-group by belbin_answer_question_id, belbin_answer_role_id;

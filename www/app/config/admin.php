@@ -3,9 +3,9 @@
 	return [
 
 		'menu' => [
-			['','Web'],
-			['admin/results','Results'],
-			['admin/default/default/customers','Customers']
+			['admin/belbin_roles','Týmové role'],			
+			['admin/belbin_questions','Otázky'],
+			['admin/belbin_tests','Výsledky testů'],
 		]
 
 	];

@@ -36,7 +36,8 @@ create table `belbin_questions` (
        `belbin_question_index` TINYINT UNSIGNED,
        `belbin_question_text` varchar(2000),
        
-       PRIMARY KEY (`belbin_question_id`)
+       PRIMARY KEY (`belbin_question_id`),
+		UNIQUE INDEX `belbin_questions_index_unique` (`belbin_question_index` ASC)
 ) ENGINE=InnoDB;
 
 create table `belbin_answers` (
@@ -47,6 +48,7 @@ create table `belbin_answers` (
        `belbin_answer_role_id` INT UNSIGNED NOT NULL,
        
        PRIMARY KEY (`belbin_answer_id`),
+       UNIQUE INDEX `belbin_answers_index_unique` (`belbin_answer_question_id`, `belbin_answer_index` ASC)
        CONSTRAINT `belbin_answers_question_fk` FOREIGN KEY (`belbin_answer_question_id`) REFERENCES `belbin_questions` (`belbin_question_id`),
        CONSTRAINT `belbin_answers_role_fk` FOREIGN KEY (`belbin_answer_role_id`) REFERENCES `belbin_roles` (`belbin_role_id`)
 ) ENGINE=InnoDB;
@@ -64,6 +66,13 @@ create table `belbin_results` (
        CONSTRAINT `belbin_result_answer_fk` FOREIGN KEY (`belbin_result_answer_id`) REFERENCES `belbin_answers` (`belbin_answer_id`)
 );
 
+DROP VIEW IF EXISTS `viewBelbinTests`;
+  
+CREATE VIEW viewBelbinTests AS
+	SELECT *
+    FROM belbin_tests t
+    JOIN customers c ON (c.customer_id = t.belbin_test_customer_id);
+    
 DROP VIEW IF EXISTS `viewBelbinResults`;
   
 CREATE VIEW viewBelbinResults AS
