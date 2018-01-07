@@ -14,11 +14,17 @@
 	/* orderby */	'score DESC'
 	);
 	
+	$total_score = zModel::sum($statistics, 'score');
+	
+	foreach ($statistics as $total) {
+		$total->set('percentage', round(z::safeDivide($total->ival('score'), $total_score) * 100, 2));
+	}
+	
 	$this->insertJS(
 		[
 			'chart_data' => [
 				'datasets' => [[
-					'data' => zModel::columnAsArray($statistics, 'score', 'i'),
+					'data' => zModel::columnAsArray($statistics, 'percentage', 'f'),
 					'backgroundColor' => zModel::columnAsArray($statistics, 'belbin_role_color'),
 					'borderWidth' => 0
 				]],				
@@ -26,3 +32,5 @@
 			]
 		]
 	);
+	
+	$this->includeJS('front.js', false, 'bottom');

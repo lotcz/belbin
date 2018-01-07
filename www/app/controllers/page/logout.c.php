@@ -1,6 +1,6 @@
 <?php
 
-	if ($this->isCustAuth() && !$this->z->custauth->val('customer_anonymous')) {
+	if ($this->isCustAuth() && !$this->z->custauth->isAnonymous()) {
 		$this->z->custauth->logout();
 	}
 	

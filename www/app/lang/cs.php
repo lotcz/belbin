@@ -15,7 +15,7 @@ $language_data['Login or E-mail'] = 'Login nebo e-mail';
 $language_data['Reset Password'] = 'Resetovat heslo';
 $language_data['Confirm Password'] = 'Potvrdit heslo';
 $language_data['Passwords don\'t match.'] = 'Hesla se neshodují.';
-$language_data['Register'] = 'Registrovat';
+$language_data['Register'] = 'Registrovat se';
 $language_data['Order & Register'] = 'Objednat & registrovat';
 $language_data['Registration'] = 'Registrace';
 $language_data['Thank you for your registration'] = 'Děkujeme za Vaši registraci';
@@ -124,4 +124,23 @@ $language_data['Category'] = 'Kategorie';
 $language_data['Name'] = 'Název';
 $language_data['Description'] = 'Popis';
 $language_data['Image'] = 'Obrázek';
+
+$language_data['1 day'] = '1 den';
+$language_data['%d days_234'] = '%d dny';
+$language_data['%d days'] = '%d dnů';
+
+$language_data['1 hour'] = '1 hodina';
+$language_data['%d hours_234'] = '%d hodiny';
+$language_data['%d hours'] = '%d hodin';
+
+$language_data['1 minute'] = '1 minuta';
+$language_data['%d minutes_234'] = '%d minuty';
+$language_data['%d minutes'] = '%d minut';
+
+$language_data['1 second'] = '1 vteřina';
+$language_data['%d seconds_234'] = '%d vteřiny';
+$language_data['%d seconds'] = '%d vteřin';
+
+$language_data['and'] = 'a';
+
 return $language_data;

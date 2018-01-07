@@ -5,34 +5,31 @@
 	$form = new zForm('register_form');
 	$form->add([
 		[
-			'name' => 'customer_email',
+			'name' => 'email',
 			'label' => 'E-mail',
 			'type' => 'text',
 			'validations' => [['type' => 'email']]
 		],
 		[
-			'name' => 'customer_password',
+			'name' => 'password',
 			'label' => 'Password',
 			'type' => 'password',
 			'validations' => [['type' => 'password']]
 		],
 		[
-			'name' => 'customer_password_confirm',
+			'name' => 'password_confirm',
 			'label' => 'Confirm Password',
 			'type' => 'password',
-			'validations' => [['type' => 'confirm', 'param' => 'customer_password']]
+			'validations' => [['type' => 'confirm', 'param' => 'password']]
 		]
 	]);
 
-	$render_form = true;
-
-	if (!$this->z->custauth->isAnonymous()) {
-		$this->z->messages->add($this->t('You are already registered and logged in!'));
-		$render_form = false;
+	if ($this->isCustAuth() && !$this->z->custauth->isAnonymous()) {
+		$this->redirect('profile');
 	} elseif (z::isPost()) {
 
-		$email = trim(strtolower(z::get('customer_email')));
-		$password = z::get('customer_password');
+		$email = trim(strtolower(z::get('email')));
+		$password = z::get('password');
 
 		// validate email and password once again
 		if ($this->z->custauth->isValidEmail($email) && $this->z->custauth->isValidPassword($password)) {
@@ -63,7 +60,11 @@
 		}
 
 	}
-
-	if ($render_form) {
-		$this->setData('form', $form);
-	}
+	
+	$this->includeJS('register.js', false, 'bottom');
+	$this->insertJS(
+		[
+			'email_check_ajax_url' => $this->url('json/default/emailexists')
+		]
+	);
+	

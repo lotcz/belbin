@@ -124,9 +124,9 @@ CREATE VIEW viewBelbinResultsStatistics AS
     FROM belbin_roles roles    
     LEFT OUTER JOIN viewBelbinRoleResultsSummary results ON (roles.belbin_role_id = results.role_id);
 
-DROP VIEW IF EXISTS `viewAverageTestDuration`;
+DROP VIEW IF EXISTS `viewFinishedTestsStats`;
   
-CREATE VIEW viewAverageTestDuration AS
-	SELECT round(avg(belbin_test_duration)) as average_duration
+CREATE VIEW viewFinishedTestsStats AS
+	SELECT count(*) as total_tests_finished, sum(belbin_test_duration) as total_duration, round(avg(belbin_test_duration)) as average_duration
     FROM belbin_tests
     WHERE belbin_test_end_date is not null;

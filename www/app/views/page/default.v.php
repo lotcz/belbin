@@ -21,24 +21,7 @@ Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše domi
 				</div>
 				<div class="col-md-6">
 					<p>
-						<canvas id="statistics_chart"></canvas>
-						<script>					
-							function initChart() {					
-								var options = Chart.defaults.pie;
-								options.animation.animateRotate = false;
-								options.legend.position = 'bottom';
-								
-								var myPieChart = new Chart(
-									'statistics_chart',
-									{
-										type: 'pie',
-										data: chart_data,
-										options: options
-									}
-								);
-							}
-							document.body.addEventListener('load', initChart, true);
-						</script>
+						<canvas id="statistics_chart"></canvas>						
 					</p>			
 				</div>		
 			</div>

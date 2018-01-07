@@ -7,7 +7,7 @@
 				<div class="col-md-6">
 					Začátek testu: <strong><?=$this->formatDateTime($test->dtval('belbin_test_start_date'))?></strong>
 					<br/>
-					Doba vypracování: <strong><?=$this->formatDuration($test->dtval('belbin_test_end_date')-$test->dtval('belbin_test_start_date'))?></strong>
+					Doba vypracování: <strong><?=TestModel::formatDuration($this, $test->dtval('belbin_test_end_date')-$test->dtval('belbin_test_start_date'))?></strong>
 					<br/>
 					Dominantní role: <strong><?=$test->results[0]->val('belbin_role_name')?>, <?=$test->results[1]->val('belbin_role_name')?></strong>
 					<br/><br/>

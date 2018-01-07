@@ -1,11 +1,12 @@
 <?php
+	require_once __DIR__ . '/../../models/test.m.php';
+	
 	$this->setPageTitle('Statistiky');
-	
-	$total_tests_finished = zSqlQuery::getRecordCount($this->db, 'belbin_tests', $whereSQL = 'where belbin_test_end_date is not null');	
-	$this->setData('total_tests_finished', $total_tests_finished);
-	
-	$duration = zModel::Select($this->db, 'viewAverageTestDuration');
-	$this->setData('average_duration', $duration[0]->val('average_duration'));
+		
+	$stats = zModel::Select($this->db, 'viewFinishedTestsStats');
+	$this->setData('total_tests_finished', $stats[0]->val('total_tests_finished'));
+	$this->setData('average_duration', $stats[0]->val('average_duration'));
+	$this->setData('total_duration', $stats[0]->val('total_duration'));
 	
 	$totals = zModel::Select(
 	/* db */		$this->db,
@@ -17,15 +18,19 @@
 	/* orderby */	'score DESC'
 	);
 	
+	$total_score = zModel::sum($totals, 'score');
+	
+	foreach ($totals as $total) {
+		$total->set('percentage', round(z::safeDivide($total->ival('score'), $total_score) * 100, 2));
+	}
+	
 	$this->setData('totals', $totals);
-	$this->setData('total_score', zModel::sum($totals, 'score'));
-	
-	
+		
 	$this->insertJS(
 		[
 			'totals_chart_data' => [
 				'datasets' => [[
-					'data' => zModel::columnAsArray($totals, 'score', 'i'),
+					'data' => zModel::columnAsArray($totals, 'percentage', 'f'),
 					'backgroundColor' => zModel::columnAsArray($totals, 'belbin_role_color'),
 					'borderWidth' => 0
 				]],				
@@ -33,3 +38,5 @@
 			]
 		]
 	);
+	
+	$this->includeJS('statistiky.js', false, 'bottom');

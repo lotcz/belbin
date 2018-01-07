@@ -1,4 +1,5 @@
 <?php
+	require_once __DIR__ . '/../../models/test.m.php';
 
 	$this->setPageTitle('Můj profil');
 	
@@ -15,6 +16,7 @@
 		/* paging */	null,
 		/* orderby */	'belbin_test_start_date DESC'
 		);
+		
 		foreach ($tests as $test) {
 			$test->results = zModel::Select(
 			/* db */		$this->db,
