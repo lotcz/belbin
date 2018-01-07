@@ -24,13 +24,26 @@ create table `belbin_tests` (
   `belbin_test_customer_id` INT UNSIGNED NOT NULL,
   `belbin_test_start_date` DATETIME NOT NULL,
   `belbin_test_end_date` DATETIME NULL,
-
+  `belbin_test_duration` INT UNSIGNED NULL,
+    
   PRIMARY KEY (`belbin_test_id`),
+  INDEX `belbin_tests_end_date_index` (`belbin_test_end_date`),
   CONSTRAINT `belbin_test_customer_fk`
     FOREIGN KEY (`belbin_test_customer_id`)
     REFERENCES `customers` (`customer_id`)
+    ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+DROP TRIGGER IF EXISTS update_belbin_test_trigger;
+ 
+DELIMITER //
+CREATE TRIGGER update_belbin_test_trigger BEFORE UPDATE ON belbin_tests	
+  FOR EACH ROW
+	BEGIN
+		SET NEW.belbin_test_duration = TIME_TO_SEC(TIMEDIFF(NEW.belbin_test_end_date, NEW.belbin_test_start_date));
+	END //
+DELIMITER ;
+ 
 create table `belbin_questions` (
        `belbin_question_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
        `belbin_question_index` TINYINT UNSIGNED,
@@ -48,9 +61,9 @@ create table `belbin_answers` (
        `belbin_answer_role_id` INT UNSIGNED NOT NULL,
        
        PRIMARY KEY (`belbin_answer_id`),
-       UNIQUE INDEX `belbin_answers_index_unique` (`belbin_answer_question_id`, `belbin_answer_index` ASC)
-       CONSTRAINT `belbin_answers_question_fk` FOREIGN KEY (`belbin_answer_question_id`) REFERENCES `belbin_questions` (`belbin_question_id`),
-       CONSTRAINT `belbin_answers_role_fk` FOREIGN KEY (`belbin_answer_role_id`) REFERENCES `belbin_roles` (`belbin_role_id`)
+       UNIQUE INDEX `belbin_answers_index_unique` (`belbin_answer_question_id`, `belbin_answer_index` ASC),
+       CONSTRAINT `belbin_answers_question_fk` FOREIGN KEY (`belbin_answer_question_id`) REFERENCES `belbin_questions` (`belbin_question_id`) ON DELETE CASCADE,
+       CONSTRAINT `belbin_answers_role_fk` FOREIGN KEY (`belbin_answer_role_id`) REFERENCES `belbin_roles` (`belbin_role_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 create table `belbin_results` (
@@ -61,9 +74,9 @@ create table `belbin_results` (
        `belbin_result_score` TINYINT UNSIGNED NOT NULL,
        
        PRIMARY KEY (`belbin_result_id`),
-       CONSTRAINT `belbin_result_test_fk` FOREIGN KEY (`belbin_result_test_id`) REFERENCES `belbin_tests` (`belbin_test_id`),
-       CONSTRAINT `belbin_result_question_fk` FOREIGN KEY (`belbin_result_question_id`) REFERENCES `belbin_questions` (`belbin_question_id`),
-       CONSTRAINT `belbin_result_answer_fk` FOREIGN KEY (`belbin_result_answer_id`) REFERENCES `belbin_answers` (`belbin_answer_id`)
+       CONSTRAINT `belbin_result_test_fk` FOREIGN KEY (`belbin_result_test_id`) REFERENCES `belbin_tests` (`belbin_test_id`) ON DELETE CASCADE,
+       CONSTRAINT `belbin_result_question_fk` FOREIGN KEY (`belbin_result_question_id`) REFERENCES `belbin_questions` (`belbin_question_id`) ON DELETE CASCADE,
+       CONSTRAINT `belbin_result_answer_fk` FOREIGN KEY (`belbin_result_answer_id`) REFERENCES `belbin_answers` (`belbin_answer_id`) ON DELETE CASCADE
 );
 
 DROP VIEW IF EXISTS `viewBelbinTests`;
@@ -110,3 +123,10 @@ CREATE VIEW viewBelbinResultsStatistics AS
 	SELECT roles.belbin_role_id, roles.belbin_role_name, roles.belbin_role_color, coalesce(results.score, 0) as score
     FROM belbin_roles roles    
     LEFT OUTER JOIN viewBelbinRoleResultsSummary results ON (roles.belbin_role_id = results.role_id);
+
+DROP VIEW IF EXISTS `viewAverageTestDuration`;
+  
+CREATE VIEW viewAverageTestDuration AS
+	SELECT round(avg(belbin_test_duration)) as average_duration
+    FROM belbin_tests
+    WHERE belbin_test_end_date is not null;

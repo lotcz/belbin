@@ -18,7 +18,7 @@
 	} else {
 		$test = new TestModel($this->db);
 		$test->set('belbin_test_customer_id', $customer_id);
-		$test->set('belbin_test_start_date', zSqlQuery::mysqlDatetime());
+		$test->set('belbin_test_start_date', zSqlQuery::mysqlDatetime(time()));
 		$test->save();
 	}
 
@@ -65,7 +65,7 @@ if ($question->is_loaded) {
 			$question = QuestionModel::loadNextQuestion($this->db, $question->ival('belbin_question_index'));			
 	
 			if (!$question->is_loaded) {
-				$test->set('belbin_test_end_date', zSqlQuery::mysqlDatetime());
+				$test->set('belbin_test_end_date', zSqlQuery::mysqlDatetime(time()));
 				$test->save();
 				$this->redirect(sprintf('default/default/result/%d', $test->ival('belbin_test_id')));
 			} else {

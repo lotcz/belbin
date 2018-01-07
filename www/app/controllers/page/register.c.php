@@ -14,7 +14,7 @@
 			'name' => 'customer_password',
 			'label' => 'Password',
 			'type' => 'password',
-			'validations' => [['type' => 'length', 'param' => 5]]
+			'validations' => [['type' => 'password']]
 		],
 		[
 			'name' => 'customer_password_confirm',
@@ -44,7 +44,7 @@
 				$this->z->messages->error($this->t('This email is already used!'));
 			} else {
 				$customer = $this->getCustomer();
-				$customer->data['customer_name'] = null;
+				$customer->data['customer_name'] = $email;
 				$customer->data['customer_email'] = $email;
 				$customer->data['customer_anonymous'] = 0;
 				$customer->data['customer_password_hash'] = $this->z->custauth->hashPassword($password);

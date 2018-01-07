@@ -64,8 +64,8 @@
 		
 	} elseif ($this->z->forms->pathAction() == 'delete') {
 		// DELETE
-		if ($model->deleteById(z::parseInt($this->z->forms->pathParam()))) {			
-			$answer->redirectBack();
+		if ($answer->deleteById(z::parseInt($this->z->forms->pathParam()))) {			
+			$this->redirectBack();
 		}
 	} else {
 		// coming to create new
