@@ -41,6 +41,7 @@
 		}
 		$this->setData('tests', $tests);
 		$this->insertJS(['chart_data' => $chart_data]);
+		$this->includeJS('profil.js');
 	} else {
 		$this->redirect('login');
 	}

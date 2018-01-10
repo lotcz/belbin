@@ -21,28 +21,3 @@
 		<?php
 	}
 ?>
-
-<script>	
-	
-	function initCharts() {
-		var charts = [];
-		var chart_options = Chart.defaults.pie;
-		chart_options.tooltips.enabled = false;
-		chart_options.legend.display = false;
-		chart_options.events = null;
-		
-		for (var i = 0, max = chart_data.length; i < max; i++) {			
-			charts.push(new Chart(
-				'chart_test_' + chart_data[i].test_id,
-				{
-					type: 'pie',
-					data: chart_data[i].data,
-					options: chart_options
-				}
-			));
-		}	
-		
-	}
-	
-	document.body.addEventListener('load', initCharts, true);
-</script>
