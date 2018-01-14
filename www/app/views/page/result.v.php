@@ -44,7 +44,7 @@
 <div class="p-2">
 	<p class="text-center">
 		<?php
-			$this->renderLink('test', 'Otestovat se znovu &raquo;', 'btn btn-lg btn-success');
+			$this->renderLink('test', 'Otestovat se znovu &raquo;', 'btn btn-lg btn-success no-print');
 		?>
 	</p>
 </div>

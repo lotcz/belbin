@@ -9,6 +9,10 @@ $language_data['decimal_separator'] = ',';
 $language_data['Hello'] = 'Dobrý den';
 $language_data['Anonymous'] = 'Anonym';
 $language_data['Log Out'] = 'Odhlásit se';
+
+$language_data['Distribute exactly %d points!'] = 'Rozdělte přesně %d bodů!';
+$language_data['Some fields in the form don\'t validate! Form cannot be saved.'] = 'Některá pole formuláře neprošla ověřením! Formulář nelze uložit.';
+
 $language_data['Go to E-shop'] = 'Přejít do e-shopu';
 $language_data['Forgotten Password'] = 'Zapomenuté heslo';
 $language_data['Login or E-mail'] = 'Login nebo e-mail';

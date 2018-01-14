@@ -9,26 +9,30 @@
 	
 	if ($test->is_loaded) {
 		if ($test->val('belbin_test_end_date') !== null) {
-			if ($this->getCustomer()->ival('customer_id') == $test->ival('belbin_test_customer_id')) {
-				$results = $test->testResults();
-				$this->setData('results', $results);
-				$this->setData('total_score', $test->totalScore());
-				$this->setData('test_duration', $test->ival('belbin_test_duration'));				
-				$this->insertJS(
-					[
-						'chart_data' => [
-							'datasets' => [[
-								'data' => zModel::columnAsArray($results, 'score', 'i'),
-								'backgroundColor' => zModel::columnAsArray($results, 'belbin_role_color'),
-								'borderWidth' => 0,
-							]],				
-							'labels' => zModel::columnAsArray($results, 'belbin_role_name')
+			if ($this->isCustAuth()) {
+				if ($this->getCustomer()->ival('customer_id') == $test->ival('belbin_test_customer_id')) {
+					$results = $test->testResults();
+					$this->setData('results', $results);
+					$this->setData('total_score', $test->totalScore());
+					$this->setData('test_duration', $test->ival('belbin_test_duration'));				
+					$this->insertJS(
+						[
+							'chart_data' => [
+								'datasets' => [[
+									'data' => zModel::columnAsArray($results, 'score', 'i'),
+									'backgroundColor' => zModel::columnAsArray($results, 'belbin_role_color'),
+									'borderWidth' => 0,
+								]],				
+								'labels' => zModel::columnAsArray($results, 'belbin_role_name')
+							]
 						]
-					]
-				);
-				$this->includeJS('result.js', false, 'bottom');
+					);
+					$this->includeJS('result.js', false, 'bottom');
+				} else {
+					$this->showErrorView('Tento test patří jinému uživateli.');
+				}
 			} else {
-				$this->showErrorView('Tento test patří jinému uživateli.');
+				$this->showErrorView('Nejste přihlášen. Výsledky testů mohou prohlížet pouze přihlášení uživatelé.');
 			}
 		} else {
 			$this->showErrorView('Test není dokončen. Nelze zobrazit výsledky.');

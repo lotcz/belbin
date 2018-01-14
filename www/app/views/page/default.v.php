@@ -19,10 +19,8 @@ Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše domi
 					</p>
 					<p><a class="btn btn-primary" href="<?=$this->url('statistiky') ?>" role="button">Více statistik &raquo;</a></p>			
 				</div>
-				<div class="col-md-6">
-					<p>
-						<canvas id="statistics_chart"></canvas>						
-					</p>			
+				<div class="col-md-6">					
+					<canvas id="statistics_chart"></canvas>	
 				</div>		
 			</div>
 		<?php

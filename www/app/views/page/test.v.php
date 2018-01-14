@@ -14,6 +14,7 @@
 <form method="POST">
 	<input type="hidden" name="test_id" value="<?=$test->val('belbin_test_id') ?>" />
 	<input type="hidden" name="question_id" value="<?=$question->val('belbin_question_id') ?>" />
+	<input type="hidden" name="form_token" value="<?=$this->getData('form_token'); ?>" />
 
 	<div class="test">
 		<?php
@@ -23,7 +24,7 @@
 					<div class="row item">
 						
 						<div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 item-count">
-							<div class="item-badge-wrapper"><div id="item_badge_<?=$answer->val('belbin_answer_id') ?>" class="item-badge" ></div></div><a onclick="javascript:minusItem(<?=$answer->val('belbin_answer_id') ?>);return false;" href="#" class="minus-item btn btn-danger"><span>-</span></a><input id="answer_<?=$answer->val('belbin_answer_id') ?>" name="answer_<?=$answer->val('belbin_answer_id') ?>" type="text" oninput="javascript:updateItem(<?=$answer->val('belbin_answer_id') ?>);return false;" maxlength="2" class="form-control answer-score-input" value="<?=$answer->val('existing_score') ?>"><a onclick="javascript:plusItem(<?=$answer->val('belbin_answer_id') ?>);return false;" href="#" class="plus-item btn btn-success"><span>+</span></a>
+							<div class="item-badge-wrapper"><div id="item_badge_<?=$answer->val('belbin_answer_id') ?>" class="item-badge" ></div></div><button type="button" onclick="javascript:minusItem(<?=$answer->val('belbin_answer_id') ?>);" class="minus-item btn btn-danger"><span>-</span></button><input id="answer_<?=$answer->val('belbin_answer_id') ?>" name="answer_<?=$answer->val('belbin_answer_id') ?>" type="text" required pattern="[0-9]{1,2}" oninput="javascript:updateItem(<?=$answer->val('belbin_answer_id') ?>);" maxlength="2" class="form-control answer-score-input" value="<?=$answer->val('existing_score') ?>"><button type="button" onclick="javascript:plusItem(<?=$answer->val('belbin_answer_id') ?>);" class="plus-item btn btn-success"><span>+</span></button>
 						</div>
 						
 						<div class="col-sm-8 col-md-9 col-lg-9 col-xl-10 item-label">
@@ -56,7 +57,7 @@
 		</div>
 		
 		<div class="col-md-6 text-right">
-			<input id="next_question_button" type="submit" disabled="true" class="btn btn-primary btn-lg" value="Další &raquo;" />
+			<input id="next_question_button" type="submit" class="btn btn-primary btn-lg" value="Další &raquo;" />
 		</div>
 	</div>
 	
