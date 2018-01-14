@@ -12,6 +12,10 @@ $language_data['Log Out'] = 'Odhlásit se';
 
 $language_data['Distribute exactly %d points!'] = 'Rozdělte přesně %d bodů!';
 $language_data['Some fields in the form don\'t validate! Form cannot be saved.'] = 'Některá pole formuláře neprošla ověřením! Formulář nelze uložit.';
+$language_data['This field is required. Cannot be left empty.'] = 'Toto pole je povinné. Nesmí zůstat prázdné.';
+$language_data['Please enter whole number.'] = 'Vložte prosím celé číslo';
+
+$language_data['Color'] = 'Barva';
 
 $language_data['Go to E-shop'] = 'Přejít do e-shopu';
 $language_data['Forgotten Password'] = 'Zapomenuté heslo';

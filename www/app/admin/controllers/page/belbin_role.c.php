@@ -9,12 +9,14 @@
 				'name' => 'belbin_role_name',
 				'label' => 'Name',
 				'type' => 'text',
+				'required' => true,
 				'validations' => [['type' => 'length', 'param' => 1]]
 			],
 			[
 				'name' => 'belbin_role_color',
 				'label' => 'Color',
 				'type' => 'text',
+				'required' => true,
 				'validations' => [['type' => 'length', 'param' => 1]]		
 			],		
 			[
