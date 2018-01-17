@@ -1,4 +1,4 @@
-<form method="post" id="register_form" action="<?=$this->url('register', $this->return_path)?>" class="form-horizontal" >
+<form method="post" id="register_form" action="<?=$this->url('registrace', $this->return_path)?>" class="form-horizontal" >
 	<div class="form-group row">
 		<label for="full_name" class="col-sm-2 control-label"><?=$this->t('Full name') ?>:</label>
 		<div class="col-sm-4">
