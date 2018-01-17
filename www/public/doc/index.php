@@ -46,11 +46,9 @@
 				
 				<hr/>
 				
-				<h2 class="display-5">Zdrojové kódy</h2>
-								
 				<div class="row">
 					<div class="col-md-6">
-						<h2>Aplikace</h2>
+						<h2>Zdrojové kódy</h2>
 						<p>
 							Zdrojové kódy aplikace jsou na 
 							<a href="https://github.com/lotcz/belbin">GitHub</a>
