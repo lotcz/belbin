@@ -3,6 +3,9 @@
 		<label for="full_name" class="col-sm-2 control-label"><?=$this->t('Full name') ?>:</label>
 		<div class="col-sm-4">
 			<input type="text" id="full_name" name="full_name" class="form-control" value="<?=$this->xssafe(z::get('full_name')) ?>" />
+		</div>
+		<div class="col-sm-4">
+			<small id="emailHelp" class="form-text text-muted">Toto pole je nepovinné. Vaše jméno nám nemusíte sdělovat, pokud nechcete.</small>
 		</div>		
 	</div>
 	<div class="form-group row">
@@ -30,8 +33,8 @@
 	<div class="row justify-content-end">
 		<div class="form-buttons col-sm-10">
 			<input type="submit" onclick="javascript:register_validate(event);" class="btn btn-success form-button" value="<?=$this->t('Register') ?>" />
-			<a class="form-button" href="<?=$this->url('forgotten-password', $this->return_path)?><?=(isset($_POST['email']) && strlen($_POST['email']) > 0) ? '&email=' . $this->xssafe($_POST['email']) : '' ?>"><?=$this->t('Zapomenuté heslo') ?></a>
-			<a class="form-button" href="<?=$this->url('login')?>"><?=$this->t('Přihlásit se') ?></a>
+			<a class="form-button" href="<?=$this->url('zapomenute-heslo', $this->return_path)?><?=(isset($_POST['email']) && strlen($_POST['email']) > 0) ? '&email=' . $this->xssafe($_POST['email']) : '' ?>"><?=$this->t('Zapomenuté heslo') ?></a>
+			<a class="form-button" href="<?=$this->url('prihlaseni')?>"><?=$this->t('Přihlásit se') ?></a>
 		</div>
 	</div>
 </form>

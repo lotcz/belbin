@@ -21,7 +21,7 @@
 					$customer->set('customer_reset_password_hash', null);
 					$customer->set('customer_reset_password_expires', null);
 					$customer->save();
-					$this->message('Your password was reset.', 'success');
+					$this->message('Your password was successfully changed.', 'success');
 				} else {
 					$this->message('Passwords don\'t match.', 'error');
 				}

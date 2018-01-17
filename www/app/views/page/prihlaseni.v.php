@@ -1,4 +1,4 @@
-<form method="post" id="login_form" action="<?=$this->url('login', $this->return_path)?>" class="form-horizontal" >
+<form method="post" id="login_form" action="<?=$this->url('prihlaseni', $this->return_path)?>" class="form-horizontal" >
 	<div class="form-group row">
 		<label for="email" class="col-sm-2 control-label"><?=$this->t('E-mail') ?>:</label>
 		<div class="col-sm-4">
@@ -16,8 +16,8 @@
 	<div class="row justify-content-end">
 		<div class="form-buttons col-sm-10">
 			<input type="submit" onclick="javascript:login_validate(event);" class="btn btn-success form-button" value="<?=$this->t('Přihlásit') ?>" />
-			<a class="form-button" href="<?=$this->url('forgotten-password', $this->return_path)?><?=(isset($_POST['email']) && strlen($_POST['email']) > 0) ? '&email=' . $this->xssafe($_POST['email']) : '' ?>"><?=$this->t('Zapomenuté heslo') ?></a>
-			<a class="form-button" href="<?=$this->url('register', $this->return_path)?><?=(isset($_POST['email']) && strlen($_POST['email']) > 0) ? '&email=' . $this->xssafe($_POST['email']) : '' ?>"><?=$this->t('Chci se registrovat') ?></a>
+			<a class="form-button" href="<?=$this->url('zapomenute-heslo', $this->return_path)?><?=(isset($_POST['email']) && strlen($_POST['email']) > 0) ? '&email=' . $this->xssafe($_POST['email']) : '' ?>"><?=$this->t('Zapomenuté heslo') ?></a>
+			<a class="form-button" href="<?=$this->url('registrace', $this->return_path)?><?=(isset($_POST['email']) && strlen($_POST['email']) > 0) ? '&email=' . $this->xssafe($_POST['email']) : '' ?>"><?=$this->t('Chci se registrovat') ?></a>
 		</div>
 	</div>
 </form>

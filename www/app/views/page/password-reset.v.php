@@ -12,14 +12,14 @@
 					<div class="form-group">
 						<label for="password" class="col-sm-4 control-label"><?=$this->t('New Password') ?>:</label>
 						<div class="col-sm-4">
-							<input type="password" name="password" class="form-control"  />
+							<input type="password" id="password" name="password" class="form-control"  />
 						</div>
 						<div class="col-sm-4 form-validation" id="password_validation_password"><?=$this->t('Required.') ?></div>
 					</div>
 					<div class="form-group">
-						<label for="password" class="col-sm-4 control-label"><?=$this->t('Repeat New Password') ?>:</label>
+						<label for="password2" class="col-sm-4 control-label"><?=$this->t('Confirm Password') ?>:</label>
 						<div class="col-sm-4">
-							<input type="password" name="password2" class="form-control"  />
+							<input type="password" name="password2" id="password2" class="form-control"  />
 						</div>
 						<div class="col-sm-4 form-validation" id="password2_validation_password"><?=$this->t('Required.') ?></div>
 						<div class="col-sm-4 form-validation" id="password2_validation_confirm"><?=$this->t('Passwords don\'t match.') ?></div>
@@ -30,7 +30,7 @@
 				</form>
 		<?php } else { ?>
 			<div class="form-buttons">
-				<a class="form-button" href="<?=$this->url('login') ?>"><?=$this->t('Sign In') ?></a>
+				<a class="form-button" href="<?=$this->url('prihlaseni') ?>"><?=$this->t('Sign In') ?></a>
 			</div>
 		<?php } ?>
 </div>

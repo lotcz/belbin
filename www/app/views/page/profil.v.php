@@ -1,3 +1,5 @@
+<a class="btn btn-primary" href="<?=$this->url('zmena-hesla'); ?>" ><?=$this->t('Change password'); ?></a>
+
 <?php
 	$tests = $this->getData('tests');
 		

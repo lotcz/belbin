@@ -71,11 +71,11 @@
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">										
 										<?php
 											if ($this->z->custauth->isAnonymous()) {
-												$this->renderLink('login', 'Přihlásit', 'dropdown-item');
-												$this->renderLink('register', 'Registrovat se', 'dropdown-item');
+												$this->renderLink('prihlaseni', 'Sign In', 'dropdown-item');
+												$this->renderLink('registrace', 'Register', 'dropdown-item');
 											} else {
 												$this->renderLink('profil', 'Můj profil', 'dropdown-item');
-												$this->renderLink('logout', 'Odhlásit', 'dropdown-item');
+												$this->renderLink('odhlaseni', 'Odhlásit', 'dropdown-item');
 											}
 										?>										
 									</div>
@@ -84,7 +84,7 @@
 								?>
 									<li class="nav-item <?=($this->raw_path == 'login') ? 'active' : ''; ?>">
 										<?php
-											$this->renderLink('login', 'Přihlásit', 'nav-link');
+											$this->renderLink('prihlaseni', 'Sign In', 'nav-link');
 										?>
 									</li>
 								<?php

@@ -19,9 +19,17 @@ $language_data['Date of first visit'] = 'Datum první návštěvy';
 $language_data['Date of last visit'] = 'Datum poslední návštěvy';
 $language_data['Customer deactivated'] = 'Zákazník deaktivován';
 
+$language_data['Enter your new password.'] = 'Vložte Vaše nové heslo.';
+$language_data['New Password'] = 'Nové heslo';
+
+$language_data['An e-mail was sent to your address with reset password instructions.'] = 'Na Vaši emailovou adresu jsme odeslali email s instrukcemi pro obnovení hesla.';
+
 $language_data['Login unsuccessful.'] = 'Přihlášení bylo neúspěšné.';
 $language_data['+ Add'] = '+ Přidat';
 
+$language_data['Change password'] = 'Změnit heslo';
+$language_data['Your password was successfully changed.'] = 'Vaše heslo bylo úspěšně změněno.';
+$language_data['Your link seems to be invalid.'] = 'Váš odkaz je neplatný.';
 
 $language_data['Please enter your login name or e-mail.'] = 'Prosím vložte Vaše uživatelské jméno nebo e-mail.';
 $language_data['Please enter your password.'] = 'Prosím vložte Vaše heslo.';
