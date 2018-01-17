@@ -15,8 +15,4 @@
 		// only applies when debug_mode is off
 		'error_page' => 'error.html',
 
-		// redirect here in case requested page was not found
-		// only applies when debug_mode is off
-		'not_found_path' => 'notfound',
-		
 	];
