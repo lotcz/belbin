@@ -36,22 +36,37 @@
 		<main role="main">
 			<div class="container">
 	
-				<h1 class="page-title display-4">Belbinův test týmových rolí</h1>
+				<h1 class="page-title display-4">Dokumentace</h1>
 				
 				<hr/>
 		
-				<h2 class="display-5">Dokumentace</h2>
-				
 				<p>
 					Na této stránce jsou k dispozici nejrůznější dokumenty týkající se projektu.
 				</p>
-
-				<h2>zEngine</h2>
-				<p>
-					Aplikace je postavená na frameworku <strong>zEngine</strong>. 
-					Zde je <a href="/index.xhtml">automaticky vygenerovaná dokumenace v nástroji PHPDox</a>.
-				</p>
 				
+				<hr/>
+				
+				<h2 class="display-5">Zdrojové kódy</h2>
+								
+				<div class="row">
+					<div class="col-md-6">
+						<h2>Aplikace</h2>
+						<p>
+							Zdrojové kódy aplikace jsou na 
+							<a href="https://github.com/lotcz/belbin">GitHub</a>
+						</p>						
+					</div>
+					<div class="col-md-6">					
+						<h2>zEngine</h2>
+						<p>
+							Aplikace je postavená na frameworku <strong>zEngine</strong>. 
+							Zdrojové kódy frameworku jsou na 
+							<a href="https://github.com/lotcz/zEngine">GitHub</a>
+							a zde je <a href="/index.xhtml">automaticky vygenerovaná dokumenace v nástroji PHPDox</a>.						
+						</p>	
+					</div>		
+				</div>
+			
 				<hr/>
 
 				<div class="row">
@@ -64,15 +79,18 @@
 						</p>
 						
 					</div>
-					<div class="col-md-6">					
-						<h2>Uživatelská příručka</h2>
+					<div class="col-md-6">	
+						<h2>Hodnocení</h2>
 						<p>
-							Příručka pro správce aplikace.
-							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Příručka.odt">ODT</a>,
-							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Příručka.docx">DOCX</a>						
-						</p>	
+							Předvyplněné hodnocení semestrálního projektu.
+							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Hodnocení.ods">ODT</a>,
+							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Hodnocení.xlxs">XLSX</a>						
+						</p>					
+							
 					</div>		
 				</div>
+			
+				<hr/>
 			
 				<div class="row">
 					<div class="col-md-6">
@@ -84,11 +102,11 @@
 						</p>
 					</div>
 					<div class="col-md-6">
-						<h2>Hodnocení</h2>
+						<h2>Uživatelská příručka</h2>
 						<p>
-							Předvyplněné hodnocení semestrálního projektu.
-							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Hodnocení.ods">ODT</a>,
-							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Hodnocení.xlxs">XLSX</a>						
+							Příručka pro správce aplikace.
+							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Příručka.odt">ODT</a>,
+							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Příručka.docx">DOCX</a>						
 						</p>
 					</div>		
 				</div>
@@ -101,8 +119,7 @@
 			<hr>
 			<p>&copy; Karel Zavadil 2018.</p>
 		</footer>
-	
-				
+		
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
