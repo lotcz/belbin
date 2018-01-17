@@ -5,6 +5,11 @@
 	$form = new zForm('register_form');
 	$form->add([
 		[
+			'name' => 'full_name',
+			'label' => 'Full name',
+			'type' => 'text'
+		],
+		[
 			'name' => 'email',
 			'label' => 'E-mail',
 			'type' => 'text',
@@ -28,6 +33,7 @@
 		$this->redirect('profile');
 	} elseif (z::isPost()) {
 
+		$full_name = z::xssafe(z::get('full_name'));
 		$email = trim(strtolower(z::get('email')));
 		$password = z::get('password');
 
@@ -41,7 +47,7 @@
 				$this->z->messages->error($this->t('This email is already used!'));
 			} else {
 				$customer = $this->getCustomer();
-				$customer->data['customer_name'] = $email;
+				$customer->data['customer_name'] = (isset($full_name)) ? $full_name : $email;
 				$customer->data['customer_email'] = $email;
 				$customer->data['customer_anonymous'] = 0;
 				$customer->data['customer_password_hash'] = $this->z->custauth->hashPassword($password);

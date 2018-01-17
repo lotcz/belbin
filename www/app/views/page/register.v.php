@@ -1,5 +1,11 @@
 <form method="post" id="register_form" action="<?=$this->url('register', $this->return_path)?>" class="form-horizontal" >
 	<div class="form-group row">
+		<label for="full_name" class="col-sm-2 control-label"><?=$this->t('Full name') ?>:</label>
+		<div class="col-sm-4">
+			<input type="text" id="full_name" name="full_name" class="form-control" value="<?=$this->xssafe(z::get('full_name')) ?>" />
+		</div>		
+	</div>
+	<div class="form-group row">
 		<label for="email" class="col-sm-2 control-label"><?=$this->t('E-mail') ?>:</label>
 		<div class="col-sm-4">
 			<input type="text" id="email" name="email" class="form-control" value="<?=$this->xssafe(z::get('email')) ?>" required />

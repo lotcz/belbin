@@ -15,6 +15,17 @@ $language_data['Some fields in the form don\'t validate! Form cannot be saved.']
 $language_data['This field is required. Cannot be left empty.'] = 'Toto pole je povinné. Nesmí zůstat prázdné.';
 $language_data['Please enter whole number.'] = 'Vložte prosím celé číslo';
 
+$language_data['Date of first visit'] = 'Datum první návštěvy';
+$language_data['Date of last visit'] = 'Datum poslední návštěvy';
+$language_data['Customer deactivated'] = 'Zákazník deaktivován';
+
+$language_data['Login unsuccessful.'] = 'Přihlášení bylo neúspěšné.';
+$language_data['+ Add'] = '+ Přidat';
+
+
+$language_data['Please enter your login name or e-mail.'] = 'Prosím vložte Vaše uživatelské jméno nebo e-mail.';
+$language_data['Please enter your password.'] = 'Prosím vložte Vaše heslo.';
+
 $language_data['Color'] = 'Barva';
 
 $language_data['Go to E-shop'] = 'Přejít do e-shopu';
