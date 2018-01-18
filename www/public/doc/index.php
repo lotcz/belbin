@@ -8,7 +8,6 @@
 
 		<meta name="description" content="Belbinův test online.">
 		<meta name="author" content="Karel Zavadil">
-		<link rel="icon" href="/favicon.ico">
 
 		<title>Belbinův test týmových rolí - Dokumentace</title>
 
@@ -16,7 +15,6 @@
 		<link rel="stylesheet" href="http://belbin.zavadil.eu/style.css">
 		<link rel="stylesheet" href="http://belbin.zavadil.eu/print-style.css" type="text/css" media="print" />
 		
-		<script>var chart_data = {"datasets":[{"data":[18.57,16.43,12.86,12.14,11.43,8.57,6.43,5,5,3.57],"backgroundColor":["#556B2F","#FF7F50","#A9A9A9","#B8860B","#5F9EA0","#228B22","#483D8B","#DC143C","#CD5C5C","#6495ED"],"borderWidth":0}],"labels":["Stmelova\u010d","Vyhledava\u010d zdroj\u016f","Neutr\u00e1ln\u00ed body","Analytik","Inov\u00e1tor","Dotahova\u010d","Realiz\u00e1tor","Formova\u010d","Specialista","Koordin\u00e1tor"]};</script>
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -44,6 +42,22 @@
 					Na této stránce jsou k dispozici nejrůznější dokumenty týkající se projektu.
 				</p>
 				
+				<p>
+					Veřejná část aplikace je k vidění na adrese <a href="http://belbin.zavadil.eu">http://belbin.zavadil.eu</a>.
+				</p>
+
+				<p>
+					Vstup do administrátorské části aplikace je na adrese <a href="http://belbin.zavadil.eu/admin">http://belbin.zavadil.eu/admin</a>.
+					<br/>
+					Pro vstup do administrace použijte následující přihlašovací údaje:
+					 <dl>
+					  <dt>Login</dt>
+					  <dd>admin</dd>
+					  <dt>Heslo</dt>
+					  <dd>admin123</dd>
+					</dl> 
+				</p>
+				
 				<hr/>
 				
 				<div class="row">
@@ -60,7 +74,7 @@
 							Aplikace je postavená na frameworku <strong>zEngine</strong>. 
 							Zdrojové kódy frameworku jsou na 
 							<a href="https://github.com/lotcz/zEngine">GitHub</a>
-							a zde je <a href="/index.xhtml">automaticky vygenerovaná dokumenace v nástroji PHPDox</a>.						
+							a zde je automaticky vygenerovaná <a href="http://dokumentace.belbin.zavadil.eu/index.xhtml">dokumenace v nástroji PHPDox</a>.						
 						</p>	
 					</div>		
 				</div>

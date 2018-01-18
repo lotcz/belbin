@@ -1,5 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+	Options -MultiViews
 	
 	# Handle downloads...
     RewriteCond %{REQUEST_URI} ^/belbin/www/public/resources/ [NC]

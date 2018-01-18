@@ -1,2 +1,3 @@
 www/app/config/*.php
 secret.sql
+/www/public/.htaccess
