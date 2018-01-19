@@ -48,14 +48,15 @@
 
 				<p>
 					Vstup do administrátorské části aplikace je na adrese <a href="http://belbin.zavadil.eu/admin">http://belbin.zavadil.eu/admin</a>.
-					<br/>
+				</p>				
+					
+				<p>
 					Pro vstup do administrace použijte následující přihlašovací údaje:
-					 <dl>
-					  <dt>Login</dt>
-					  <dd>admin</dd>
-					  <dt>Heslo</dt>
-					  <dd>admin123</dd>
-					</dl> 
+					<br/>
+					<br/>
+					<strong>Login:</strong> admin
+					<br/>
+					<strong>Heslo:</strong> admin123					
 				</p>
 				
 				<hr/>
@@ -95,7 +96,7 @@
 						<h2>Hodnocení</h2>
 						<p>
 							Předvyplněné hodnocení semestrálního projektu.
-							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Hodnocení.ods">ODT</a>,
+							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Hodnocení.ods">ODS</a>,
 							<a href="http://belbin.zavadil.eu/doc/Belbinův test online - Hodnocení.xlxs">XLSX</a>						
 						</p>					
 							
