@@ -1,0 +1,9 @@
+language: php
+php:
+  - '7.1'
+install:
+  - make z_install app_config
+script: phpunit --bootstrap tests/autoload.php --testdox tests
+after_failure:
+  - cat zEngine.log
+  - cat belbin.log
