@@ -16,4 +16,5 @@
 	$db_name = $options['db_name'] ?? null;
 
 	$z->app->installAllModules($db_login, $db_password, $db_name);
-	$z->db->executeFile(__DIR__ . '/sample.sql', $db_login, $db_password, $db_name);
+	$z->db->executeFile(__DIR__ . '/belbin.sql', $db_login, $db_password, $db_name);
+	$z->db->executeFile(__DIR__ . '/data.sql', $db_login, $db_password, $db_name);

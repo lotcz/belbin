@@ -2,18 +2,15 @@
 
 class QuestionModel extends zModel {
 
-	public $table_name = 'belbin_questions';
-	public $id_name = 'belbin_question_id';
+	public $table_name = 'belbin_question';
 
 	static function loadFirstQuestion($db) {
-		$questions = QuestionModel::Select(
+		$questions = QuestionModel::select(
 		/* db */		$db,
-		/* table */		'belbin_questions',
+		/* table */		'belbin_question',
 		/* where */		null,
-		/* bindings */	null,
-		/* types */		null,
-		/* paging */	new zPaging(0, 1),
-		/* orderby */	'belbin_question_index'
+		/* orderby */	'belbin_question_index',
+		/* limit */		'0,1'
 		);
 		if (count($questions) > 0) {
 			return $questions[0];
@@ -23,14 +20,14 @@ class QuestionModel extends zModel {
 	}
 
 	static function loadPreviousQuestion($db, $index) {
-		$questions = QuestionModel::Select(
+		$questions = QuestionModel::select(
 		/* db */		$db,
-		/* table */		'belbin_questions',
+		/* table */		'belbin_question',
 		/* where */		'belbin_question_index < ?',
+		/* orderby */	'belbin_question_index DESC',
+		/* limit */		'0,1',
 		/* bindings */	[$index],
-		/* types */		'i',
-		/* paging */	new zPaging(0, 1),
-		/* orderby */	'belbin_question_index DESC'
+		/* types */		[PDO::PARAM_INT]
 		);
 		if (count($questions) > 0) {
 			return $questions[0];
@@ -40,14 +37,14 @@ class QuestionModel extends zModel {
 	}
 
 	static function loadNextQuestion($db, $index) {
-		$questions = QuestionModel::Select(
+		$questions = QuestionModel::select(
 		/* db */		$db,
-		/* table */		'belbin_questions',
+		/* table */		'belbin_question',
 		/* where */		'belbin_question_index > ?',
+		/* orderby */	'belbin_question_index',
+		/* limit */		'0,1',
 		/* bindings */	[$index],
-		/* types */		'i',
-		/* paging */	new zPaging(0, 1),
-		/* orderby */	'belbin_question_index'
+		/* types */		[PDO::PARAM_INT]
 		);
 		if (count($questions) > 0) {
 			return $questions[0];
@@ -55,5 +52,5 @@ class QuestionModel extends zModel {
 			return null;
 		}
 	}
-	
+
 }

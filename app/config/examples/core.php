@@ -5,7 +5,7 @@
 		'site_title' => 'Belbinův test týmových rolí',
 
 		// will be used to create all link urls, no trailing slash
-		'base_url' => 'http://localhost/belbin/www/public',
+		'base_url' => 'http://localhost',
 
 		// if turned on, display message of unrecoverable error
 		// turn this off in production!
@@ -13,6 +13,6 @@
 
 		// redirect here in case of unrecoverable error
 		// only applies when debug_mode is off
-		'error_page' => 'error.html',
+		'error_page' => 'error.html'
 
 	];

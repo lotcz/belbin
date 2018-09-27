@@ -2,18 +2,17 @@
 
 class AnswerModel extends zModel {
 
-	public $table_name = 'belbin_answers';
-	public $id_name = 'belbin_answer_id';
+	public $table_name = 'belbin_answer';
 
 	static function loadAllForQuestion($db, $question_id) {
-		return AnswerModel::Select(
+		return AnswerModel::select(
 		/* db */		$db,
-		/* table */		'belbin_answers',
+		/* table */		'belbin_answer',
 		/* where */		'belbin_answer_question_id = ?',
+		/* orderby */	'belbin_answer_index',
+		/* limit */	null,
 		/* bindings */	[$question_id],
-		/* types */		'i',
-		/* paging */	null,
-		/* orderby */	'belbin_answer_index'
+		/* types */		[PDO::PARAM_INT]
 		);
 	}
 

@@ -2,17 +2,21 @@ function getItemCount(id) {
 	return parseInt($('#answer_'+id).val());
 }
 
-function setItemCount(id, cnt) {
-	if (isNaN(cnt)) {
-		cnt = 0;
-	}
-	$('#answer_'+id).val(parseInt(cnt));
+function updateItemBadge(id, cnt) {	
 	var percentage = 0;
 	if (cnt > 0) {		
 		percentage = 0.3 + 0.7 * (cnt / score_per_question);
 	}
 	percentage = (percentage * 100) + '%';
-	$('#item_badge_'+id).css({width:percentage, height:percentage});
+	$('#item_badge_'+id).css({width:percentage, height:percentage});	
+}
+
+function setItemCount(id, cnt) {
+	if (isNaN(cnt)) {
+		cnt = 0;
+	}
+	$('#answer_'+id).val(parseInt(cnt));
+	updateItemBadge(id, cnt);
 	updateTotalScore();
 }
 

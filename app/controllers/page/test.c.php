@@ -5,80 +5,80 @@
 	require_once __DIR__ . '/../../models/result.m.php';
 	require_once __DIR__ . '/../../models/test.m.php';
 
-	if (!$this->isCustAuth()) {
-		$this->z->custauth->createAnonymousSession();
+	if (!$this->z->auth->isAuth()) {
+		$this->z->auth->createAnonymousSession();
 	}
-	$customer_id = $this->z->custauth->customer->ival('customer_id');
+	$user_id = $this->z->auth->user->ival('user_id');
 
 	$test_id = z::getInt('test_id', $this->getPath(-2));
 	$test = null;
 
 	//load test in progress
 	if (z::parseInt($test_id) > 0) {
-		$test = new TestModel($this->db, $test_id);
+		$test = new TestModel($this->z->db, $test_id);
 	}
 
 	//start new test
 	if ($test === null || !$test->is_loaded) {
-		$test = new TestModel($this->db);
-		$test->set('belbin_test_customer_id', $customer_id);
-		$test->set('belbin_test_start_date', zSqlQuery::mysqlDatetime(time()));
+		$test = new TestModel($this->z->db);
+		$test->set('belbin_test_user_id', $user_id);
+		$test->set('belbin_test_start_date', z::mysqlDatetime(time()));
 		$test->save();
 	}
 
 	if ($test->val('belbin_test_end_date') === null) {
-		if ($this->getCustomer()->ival('customer_id') == $test->ival('belbin_test_customer_id')) {
+		if ($this->z->auth->user->ival('user_id') == $test->ival('belbin_test_user_id')) {
 			$question_id = z::getInt('question_id', $this->getPath(-1));
 			$question = null;
 			$prev_question = null;
 			$next_question = null;
 
 			if (z::parseInt($question_id) > 0) {
-				$question = new QuestionModel($this->db, $question_id);
+				$question = new QuestionModel($this->z->db, $question_id);
 			} else {
-				$question = QuestionModel::loadFirstQuestion($this->db);
+				$question = QuestionModel::loadFirstQuestion($this->z->db);
 			}
-			
+
 			if ($question->is_loaded) {
 				$original_question = $question;
-				
-				$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
-						
-				if (z::isPost()) {				
-				
+
+				$answers = AnswerModel::loadAllForQuestion($this->z->db, $question->ival('belbin_question_id'));
+
+				if (z::isPost()) {
+
 					if ($this->z->forms->verifyXSRFTokenHash('belbin_test_form', z::get('form_token'))) {
-					
+
 						$answered_score = 0;
 						$results = [];
-								
+
 						foreach ($answers as $answer) {
 							$question_score = z::getInt('answer_' . $answer->val('belbin_answer_id'), 0);
 							if ($question_score > 0) {
 								$answered_score += $question_score;
-								$result = new ResultModel($this->db);
+								$result = new ResultModel($this->z->db);
 								$result->set('belbin_result_test_id', $test->ival('belbin_test_id'));
 								$result->set('belbin_result_question_id', $question->ival('belbin_question_id'));
 								$result->set('belbin_result_answer_id', $answer->ival('belbin_answer_id'));
 								$result->set('belbin_result_score', $question_score);
 								$results[] = $result;
 							}
-						}		
+						}
 
-						//z::debug($answered_score);		
-						
+						//z::debug($answered_score);
+
 						if ($answered_score == TestModel::$score_per_question) {
-							ResultModel::deleteAllQuestionResults($this->db, $question->ival('belbin_question_id'), $test->ival('belbin_test_id'));
-							foreach ($results as $result) {				
+							ResultModel::deleteAllQuestionResults($this->z->db, $question->ival('belbin_question_id'), $test->ival('belbin_test_id'));
+							foreach ($results as $result) {
 								$result->save();
 							}
-							$question = QuestionModel::loadNextQuestion($this->db, $question->ival('belbin_question_index'));			
-					
-							if (isset($question) && $question->is_loaded) {							
-								$answers = AnswerModel::loadAllForQuestion($this->db, $question->ival('belbin_question_id'));
+							$question = QuestionModel::loadNextQuestion($this->z->db, $question->ival('belbin_question_index'));
+
+							if (isset($question) && $question->is_loaded) {
+								$answers = AnswerModel::loadAllForQuestion($this->z->db, $question->ival('belbin_question_id'));
 							} else {
 								if ($test->validateTestResults()) {
 									//test is ok - finish the test and redirect to result
-									$test->set('belbin_test_end_date', zSqlQuery::mysqlDatetime(time()));
+									$test->set('belbin_test_end_date', z::mysqlDatetime(time()));
 									$test->save();
 									$this->redirect(sprintf('default/default/result/%d', $test->ival('belbin_test_id')));
 								} else {
@@ -95,27 +95,36 @@
 					}
 				}
 
+				$this->insertJS(['score_per_question' => TestModel::$score_per_question]);
+				$this->includeJS('belbin.js');
+
 				// set answer score if this question was already answered
-				$existing_results = ResultModel::loadAllForTestQuestion($this->db, $test->ival('belbin_test_id'), $question->ival('belbin_question_id'));	
+				$existing_results = ResultModel::loadAllForTestQuestion($this->z->db, $test->ival('belbin_test_id'), $question->ival('belbin_question_id'));
 				foreach ($answers as $answer) {
 					$existing = zModel::find($existing_results, 'belbin_result_answer_id', $answer->ival('belbin_answer_id'));
+					$existing_score = 0;
 					if (isset($existing)) {
-						$answer->set('existing_score', $existing->val('belbin_result_score'));
+						$existing_score = $existing->ival('belbin_result_score');
 					} else {
-						$answer->set('existing_score', z::getInt('answer_' . $answer->val('belbin_answer_id'), 0));
-					}		
+						$existing_score = z::getInt('answer_' . $answer->val('belbin_answer_id'), 0);
+					}
+					$answer->set('existing_score', $existing_score);
+
+					// this will update UI with javascript
+					if ($existing_score > 0) {
+						$this->insertJS(sprintf('updateItemBadge(%d, %d);', $answer->val('belbin_answer_id'), $existing_score), 'bottom');
+					}
+
 				}
-				
-				$prev_question = QuestionModel::loadPreviousQuestion($this->db, $question->ival('belbin_question_index'));
+
+				$prev_question = QuestionModel::loadPreviousQuestion($this->z->db, $question->ival('belbin_question_index'));
 				$this->setPageTitle(sprintf('Otázka č. %d', $question->ival('belbin_question_index')));
 				$this->setData('test', $test);
 				$this->setData('question', $question);
 				$this->setData('answers', $answers);
 				$this->setData('form_token', $this->z->forms->createXSRFTokenHash('belbin_test_form'));
 				$this->setData('prev_question', $prev_question);
-				$this->insertJS(['score_per_question' => TestModel::$score_per_question]);
-				$this->includeJS('belbin.js', false);
-				
+
 			} else {
 				throw new Exception(sprintf('Cannot load question! Requested question ID: %d', $question_id));
 			}

@@ -6,7 +6,8 @@
 
 		//default language which will be selected if automatic selection fails
 		'default_language' => 'cs',
-		
-		//default language which will be selected if automatic selection fails
+
+		//always force use of default language - use for single language sites
 		'force_default_language' => true,
+		
 	];

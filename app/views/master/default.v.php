@@ -12,28 +12,23 @@
 
 		<title><?=$this->getFullPageTitle() ?></title>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 		<link rel="stylesheet" href="<?=$this->url('style.css') ?>">
 		<link rel="stylesheet" href="<?=$this->url('print-style.css') ?>" type="text/css" media="print" />
-		
+
 		<?php
-			$this->renderIncludes('head');			
+			$this->renderIncludes('head');
 		?>
 
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
 	</head>
 
 	<body>
-		
+
 		<nav class="navbar navbar-expand-md navbar-dark fixed-top">
 			<?php
 				$this->renderLink('', 'Belbinův test online', 'navbar-brand');
 			?>
-		  
+
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon">&nbsp;</span>
 			</button>
@@ -45,13 +40,13 @@
 							$this->renderLink('o-testu', 'O testu', 'nav-link');
 						?>
 					</li>
-					
+
 					<li class="nav-item <?=($this->raw_path == 'tymove-role') ? 'active' : ''; ?>">
 						<?php
 							$this->renderLink('tymove-role', 'Týmové role', 'nav-link');
 						?>
 					</li>
-					
+
 					<li class="nav-item <?=($this->raw_path == 'statistiky') ? 'active' : ''; ?>">
 						<?php
 							$this->renderLink('statistiky', 'Statistiky', 'nav-link');
@@ -62,22 +57,22 @@
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
 						<?php
-							if ($this->isCustAuth()) {
+							if ($this->z->auth->isAuth()) {
 								?>
 									<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<?=($this->z->custauth->isAnonymous()) ? 'Anonym' : $this->z->custauth->customer->val('customer_email') ?>
+										<?=($this->z->auth->isAnonymous()) ? 'Anonym' : $this->z->auth->user->val('user_email') ?>
 									</a>
-						
-									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">										
+
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
 										<?php
-											if ($this->z->custauth->isAnonymous()) {
+											if ($this->z->auth->isAnonymous()) {
 												$this->renderLink('prihlaseni', 'Sign In', 'dropdown-item');
 												$this->renderLink('registrace', 'Register', 'dropdown-item');
 											} else {
 												$this->renderLink('profil', 'Můj profil', 'dropdown-item');
 												$this->renderLink('odhlaseni', 'Odhlásit', 'dropdown-item');
 											}
-										?>										
+										?>
 									</div>
 								<?php
 							} else {
@@ -90,30 +85,39 @@
 								<?php
 							}
 						?>
-						
+
 					</li>
 				</ul>
 			</div>
 		</nav>
-	
+
 		<main role="main">
 			<?php
 				$this->renderMainView();
 			?>
-		</main>		
+		</main>
 
 		<footer class="container text-right">
 			<hr>
 			<p>&copy; Karel Zavadil 2018.</p>
 		</footer>
-	
+
 		<?php
 			$this->renderIncludes('default');
 		?>
-		
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+
+		<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+		<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+				integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+				crossorigin="anonymous"></script>
+		<script
+				src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+				integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+				crossorigin="anonymous"></script>
 
 		<?php
 			$this->renderIncludes('bottom');

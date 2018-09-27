@@ -1,10 +1,10 @@
 <?php
 
 	$this->setPageTitle('Týmové role');
-	
+
 	$roles = zModel::Select(
-	/* db */		$this->db,
-	/* table */		'belbin_roles',
+	/* db */		$this->z->db,
+	/* table */		'belbin_role',
 	/* where */		null,
 	/* bindings */	null,
 	/* types */		null,
