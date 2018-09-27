@@ -23,9 +23,9 @@ z_install:
 
 app_config:
 	cp -R $(APP_DIR)/app/config/examples/. $(APP_DIR)/app/config
-	
+
 app_apache_install:
-	cp $(APP_DIR)/zSample.conf /etc/apache2/sites-available
+	cp $(APP_DIR)/belbin.conf /etc/apache2/sites-available
 	
 app_install: app_config app_apache_install
 
