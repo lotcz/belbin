@@ -1,5 +1,5 @@
 <?php
-	$this->renderPartialView('nav');
+	$this->renderPartialView('test-nav');
 ?>
 
 <div class="container">
@@ -14,7 +14,5 @@
 
 </div>
 
-<footer class="container text-right">
-	<hr>
-	<p>&copy; Karel Zavadil 2018.</p>
-</footer>
+<br>
+<br>

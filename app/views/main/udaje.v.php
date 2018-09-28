@@ -1,6 +1,7 @@
-<?php
-	$this->renderPartialView('nav');
-?>
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+  <span class="navbar-brand">Belbinův test online</span>
+  <span class="navbar-text">Demografické údaje</span>
+</nav>
 
 <div class="container">
 

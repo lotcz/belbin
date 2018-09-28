@@ -1,14 +1,14 @@
 :root {
   --dark-bg-color: darkslategray;
-  --dark-text-color: white;  
+  --dark-text-color: white;
   --light-bg-color: lightseagreen;
   --light-text-color: white;
   --default-bg-color: white;
-  --default-text-color: #303030;  
+  --default-text-color: #303030;
 }
 
 body {
-  padding-top: 3.5rem;
+  /*padding-top: 3.5rem;*/
   background-color: var(--default-bg-color);
   color: var(--default-text-color);
 }
@@ -75,7 +75,7 @@ nav.navbar,
 }
 
 .test .item .item-count {
-	display:inline-block;	
+	display:inline-block;
 }
 
 .test .item .item-count .btn {
@@ -93,7 +93,7 @@ nav.navbar,
 	text-align:center;
 	vertical-align:top;
 	width:3em;
-	margin:0;	
+	margin:0;
 }
 
 .test .item .item-label {

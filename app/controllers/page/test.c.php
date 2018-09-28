@@ -5,6 +5,8 @@
 	require_once __DIR__ . '/../../models/result.m.php';
 	require_once __DIR__ . '/../../models/test.m.php';
 
+	$this->setMainTemplate('test');
+
 	if (!$this->z->auth->isAuth()) {
 		$this->z->auth->createAnonymousSession();
 	}
@@ -77,10 +79,10 @@
 								$answers = AnswerModel::loadAllForQuestion($this->z->db, $question->ival('belbin_question_id'));
 							} else {
 								if ($test->validateTestResults()) {
-									//test is ok - finish the test and redirect to result
+									//test is ok - finish the test and redirect to demografic info form
 									$test->set('belbin_test_end_date', z::mysqlDatetime(time()));
 									$test->save();
-									$this->redirect(sprintf('default/default/result/%d', $test->ival('belbin_test_id')));
+									$this->redirect(sprintf('default/udaje/udaje/%d', $test->ival('belbin_test_id')));
 								} else {
 									//test is not valid - redirect to last question and ask user to answer all questions
 									$question = $original_question;
@@ -96,7 +98,7 @@
 				}
 
 				$this->insertJS(['score_per_question' => TestModel::$score_per_question]);
-				$this->includeJS('belbin.js');
+				$this->includeJS('test.js');
 
 				// set answer score if this question was already answered
 				$existing_results = ResultModel::loadAllForTestQuestion($this->z->db, $test->ival('belbin_test_id'), $question->ival('belbin_question_id'));
@@ -120,6 +122,7 @@
 				$prev_question = QuestionModel::loadPreviousQuestion($this->z->db, $question->ival('belbin_question_index'));
 				$this->setPageTitle(sprintf('Otázka č. %d', $question->ival('belbin_question_index')));
 				$this->setData('test', $test);
+				$this->setData('questions_count', $this->z->db->getRecordCount('belbin_question'));
 				$this->setData('question', $question);
 				$this->setData('answers', $answers);
 				$this->setData('form_token', $this->z->forms->createXSRFTokenHash('belbin_test_form'));

@@ -13,6 +13,8 @@ create table `belbin_test` (
   `belbin_test_start_date` DATETIME NOT NULL,
   `belbin_test_end_date` DATETIME NULL,
   `belbin_test_duration` INT UNSIGNED NULL,
+  `belbin_test_sex` BOOLEAN NULL,
+  `belbin_test_age` TINYINT UNSIGNED NULL,
 
   PRIMARY KEY (`belbin_test_id`),
   INDEX `belbin_tests_end_date_index` (`belbin_test_end_date`),
