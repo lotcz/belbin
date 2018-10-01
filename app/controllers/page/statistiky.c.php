@@ -12,14 +12,14 @@
 	/* db */		$this->z->db,
 	/* table */		'viewBelbinResultsStatistics',
 	/* where */		null,
+	/* orderby */	'score DESC',
+	/* limit */	null,
 	/* bindings */	null,
-	/* types */		null,
-	/* paging */	null,
-	/* orderby */	'score DESC'
+	/* types */		null
 	);
 
 	$total_score = zModel::sum($totals, 'score');
-	
+
 	foreach ($totals as $total) {
 		$total->set('percentage', round(z::safeDivide($total->ival('score'), $total_score) * 100, 2));
 	}
