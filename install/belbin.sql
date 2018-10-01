@@ -69,6 +69,9 @@ create table `belbin_result` (
        CONSTRAINT `belbin_result_answer_fk` FOREIGN KEY (`belbin_result_answer_id`) REFERENCES `belbin_answer` (`belbin_answer_id`) ON DELETE CASCADE
 );
 
+/*
+ * Simple view of belbin tests.
+ */
 DROP VIEW IF EXISTS `viewBelbinTests`;
 
 CREATE VIEW viewBelbinTests AS
@@ -76,47 +79,91 @@ CREATE VIEW viewBelbinTests AS
     FROM belbin_test t
     JOIN user u ON (u.user_id = t.belbin_test_user_id);
 
+/*
+ * Raw view of belbin test results.
+ * Shows score for each role by test. Roles that were not assigned any score are missing!
+ */
 DROP VIEW IF EXISTS `viewBelbinResults`;
 
 CREATE VIEW viewBelbinResults AS
-	SELECT t.belbin_test_id as test_id, a.belbin_answer_role_id as role_id, r.belbin_result_score as score
+	SELECT t.belbin_test_id, a.belbin_answer_role_id as belbin_role_id, sum(r.belbin_result_score) as score
     FROM belbin_result r
     JOIN belbin_test t ON (t.belbin_test_id = r.belbin_result_test_id)
     JOIN belbin_answer a ON (a.belbin_answer_id = r.belbin_result_answer_id)
-    WHERE t.belbin_test_end_date is not null;
-
-DROP VIEW IF EXISTS `viewBelbinTestResultsSummary`;
-
-CREATE VIEW viewBelbinTestResultsSummary AS
-	SELECT test_id, role_id, sum(score) as score
-    FROM viewBelbinResults
-    GROUP BY test_id, role_id;
-
-DROP VIEW IF EXISTS `viewBelbinRoleResultsSummary`;
-
-CREATE VIEW viewBelbinRoleResultsSummary AS
-	SELECT role_id, sum(score) as score
-    FROM viewBelbinResults
-    GROUP BY role_id;
-
+    WHERE t.belbin_test_end_date is not null
+   	group by t.belbin_test_id, a.belbin_answer_role_id;
+  
+/*
+ * Simple view of belbin test results.
+ * Shows score for each role for each test. All roles included.
+ */
 DROP VIEW IF EXISTS `viewBelbinTestResults`;
 
 CREATE VIEW viewBelbinTestResults AS
-	SELECT roles.belbin_role_id, roles.belbin_role_name, roles.belbin_role_color, tests.belbin_test_id, coalesce(results.score, 0) as score
+	SELECT roles.belbin_role_id, roles.belbin_role_name, roles.belbin_role_color, tests.belbin_test_id, tests.belbin_test_sex, tests.belbin_test_age, coalesce(results.score, 0) as score
     FROM belbin_role roles
     INNER JOIN belbin_test tests
-    LEFT OUTER JOIN viewBelbinTestResultsSummary results ON (roles.belbin_role_id = results.role_id and tests.belbin_test_id = results.test_id);
+    LEFT OUTER JOIN viewBelbinResults results ON (roles.belbin_role_id = results.belbin_role_id and tests.belbin_test_id = results.belbin_test_id);
 
-DROP VIEW IF EXISTS `viewBelbinResultsStatistics`;
+/*
+ * Shows aggregated result statistics of all tests in database.
+ */  
+DROP VIEW IF EXISTS `viewBelbinTestResultsStatistics`;
 
-CREATE VIEW viewBelbinResultsStatistics AS
-	SELECT roles.belbin_role_id, roles.belbin_role_name, roles.belbin_role_color, coalesce(results.score, 0) as score
-    FROM belbin_role roles
-    LEFT OUTER JOIN viewBelbinRoleResultsSummary results ON (roles.belbin_role_id = results.role_id);
+CREATE VIEW viewBelbinTestResultsStatistics AS
+	SELECT results.belbin_role_id, results.belbin_role_name, results.belbin_role_color, sum(results.score) as score
+    FROM viewBelbinTestResults results
+   	group by results.belbin_role_id, results.belbin_role_name, results.belbin_role_color;
 
+/*
+ * Shows aggregated result statistics by gender of tests where gender is available.
+ */  
+DROP VIEW IF EXISTS `viewBelbinTestResultsStatisticsByGender`;
+
+CREATE VIEW viewBelbinTestResultsStatisticsByGender AS
+	SELECT results.belbin_role_id, results.belbin_role_name, results.belbin_role_color, results.belbin_test_sex, sum(results.score) as score
+    FROM viewBelbinTestResults results
+    where results.belbin_test_sex is not null
+   	group by results.belbin_role_id, results.belbin_role_name, results.belbin_role_color, results.belbin_test_sex;
+
+/*
+ * Shows aggregated result statistics by age of tests where age is available.
+ */  
+DROP VIEW IF EXISTS `viewBelbinTestResultsStatisticsByAge`;
+
+CREATE VIEW viewBelbinTestResultsStatisticsByAge AS
+	SELECT results.belbin_role_id, results.belbin_test_age, sum(results.score) as score
+    FROM viewBelbinTestResults results
+    where results.belbin_test_age is not null
+   	group by results.belbin_role_id, results.belbin_test_age;
+
+/*
+ * Statistics about finished tests - total number, average time, etc. 
+ */
 DROP VIEW IF EXISTS `viewFinishedTestsStats`;
 
 CREATE VIEW viewFinishedTestsStats AS
-	SELECT count(*) as total_tests_finished, sum(belbin_test_duration) as total_duration, round(avg(belbin_test_duration)) as average_duration
+	SELECT count(*) as total_tests_finished, round(avg(belbin_test_duration)) as average_duration
     FROM belbin_test
     WHERE belbin_test_end_date is not null;
+
+/*
+ * Statistics about finished tests grouped by gender. Tests with no gender info will not be included. 
+ */
+DROP VIEW IF EXISTS `viewFinishedTestsStatsByGender`;
+
+CREATE VIEW viewFinishedTestsStatsByGender AS
+	SELECT belbin_test_sex, count(*) as total_tests_finished, sum(belbin_test_duration) as total_duration, round(avg(belbin_test_duration)) as average_duration
+    FROM belbin_test    
+    WHERE belbin_test_end_date IS NOT NULL AND belbin_test_sex IS NOT NULL
+   	GROUP BY belbin_test_sex;
+   
+/*
+ * Statistics about finished tests where users shared their age.
+ */
+DROP VIEW IF EXISTS `viewFinishedTestsStatsByAge`;
+
+CREATE VIEW viewFinishedTestsStatsByAge AS
+	SELECT count(*) as total_tests_finished, round(avg(belbin_test_age)) as average_age, min(belbin_test_age) as min_age, max(belbin_test_age) as max_age
+    FROM belbin_test    
+    WHERE belbin_test_end_date IS NOT NULL AND belbin_test_age IS NOT NULL;

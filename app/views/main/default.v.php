@@ -2,7 +2,7 @@
 	$this->renderPartialView('nav');
 ?>
 
-<div class="container">
+<main class="container">
 
 	<h1 class="page-title display-4"><?=$this->data['page_title'] ?></h1>
 	<hr>
@@ -12,7 +12,7 @@
 		$this->renderPageView();
 	?>
 
-</div>
+</main>
 
 <footer class="container text-right">
 	<hr>

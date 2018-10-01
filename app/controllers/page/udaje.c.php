@@ -26,7 +26,7 @@
 						$current_year = date("Y");
 						$age = $current_year - $year_of_birth;
 						if ($age > 10 && $age < 100) {
-							$test->set('belbin_test_age', $age);
+							$test->set('belbin_test_age', round($age/5)*5);
 						}
 						$test->save();
 						$this->redirect(sprintf('default/default/vysledek/%d', $test_id));

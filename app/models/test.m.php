@@ -5,12 +5,15 @@ class TestModel extends zModel {
 	public $table_name = 'belbin_test';
 
 	static $score_per_question = 10;
+	static $male_sex_id = 1;
+	static $female_sex_id = 0;
 
 	private $results;
 
 	public function testResults() {
 		if (!isset($this->results)) {
-			$this->results = $this->loadResults();
+			$this->results = TestModel::loadTestResults($this->db, $this->ival('belbin_test_id'));
+			TestModel::addPercentageToTestResults($this->results, $this->totalScore());
 		}
 		return $this->results;
 	}
@@ -24,12 +27,17 @@ class TestModel extends zModel {
 		return $this->total_score;
 	}
 
-	public function loadResults() {
-		return TestModel::loadTestResults($this->db, $this->ival('belbin_test_id'));
+	static function addPercentageToTestResults(&$results, $total_score = null, $score_field_name = 'score', $percentage_field_name = 'percentage') {
+		if ($total_score == null) {
+			$total_score = zModel::sum($results, $score_field_name);
+		}
+		foreach ($results as $result) {
+			$result->set($percentage_field_name, round(z::safeDivide($result->ival($score_field_name), $total_score) * 100, 2));
+		}
 	}
 
 	static function loadTestResults($db, $test_id) {
-		return zModel::Select(
+		return zModel::select(
 		/* db */		$db,
 		/* table */		'viewBelbinTestResults',
 		/* where */		'belbin_test_id = ?',

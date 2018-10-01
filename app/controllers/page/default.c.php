@@ -6,7 +6,7 @@
 
 	$statistics = zModel::select(
 	/* db */		$this->z->db,
-	/* table */		'viewBelbinResultsStatistics',
+	/* table */		'viewBelbinTestResultsStatistics',
 	/* where */		null,
 	/* bindings */	null,
 	/* types */		null,

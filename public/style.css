@@ -34,6 +34,10 @@ nav.navbar,
 	padding-bottom:1rem;
 }
 
+.text-medium {
+	font-size:2rem;
+}
+
 .text-large {
 	font-size:3rem;
 	font-weight:300;
@@ -49,6 +53,16 @@ nav.navbar,
 	display:inline-block;
 	padding:1rem;
 	margin:1rem;
+}
+
+.stats-small {
+	text-align:center;
+}
+
+.stats-small .stat-value {
+	display:inline-block;
+	padding:0.5rem;
+	margin:0.5rem;
 }
 
 .role-badge {
@@ -120,6 +134,10 @@ nav.navbar,
 	border-radius:50%;
 	margin:0;
 	padding:0;
+}
+
+.test-results {
+  margin:auto;
 }
 
 .test-results td,

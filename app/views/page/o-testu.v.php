@@ -1,27 +1,32 @@
+<h2>Jak se test vyplňuje</h2>
+<p>
+Test má celkem sedm otázek. Pro každou otázku dostanete k dispozici celkem deset různých odpovědí.
+Každá role je zastoupena jednou odpovědí plus jedna odpověď navíc představuje neutrální body.
+V každé otázce vyberte ty odpovědi, která vás nejlépe vystihují.
+Můžete vybrat jedno, dvě nebo více tvrzení.
+Vybraná tvrzení poté ohodnoťte bodovým hodnocením tak, že mezi ně rozdělíte vždy deset bodů v každé sekci.
+</p>
+
 <h2>O autorovi</h2>
 
 <p>
-<img src="<?=$this->url('belbin.jpg') ?>" class="img-thumbnail rounded float-right" alt="Dr. Raymond Meredith Belbin" />
+<figure class="figure float-right">
+  <img src="<?=$this->url('belbin.jpg') ?>" class="img-thumbnail rounded" alt="Dr. Raymond Meredith Belbin">
+  <figcaption class="figure-caption">Dr. Raymond Meredith Belbin</figcaption>
+</figure>
 Autorem testu je britský výzkumník a teoretik managementu Dr. Raymond Meredith Belbin, nejlépe známý pro jeho práci o manažerských týmech.
-Narodil se v roce 1926. Věnoval se studiu klasické psychologie na Clare College v Cambridgi. 
-Jeho prvním místem po získání doktorátu byl vědecký pracovník na Cranfield College (nyní Cranfield School of Management na Cranfield University). 
+Narodil se v roce 1926. Věnoval se studiu klasické psychologie na Clare College v Cambridgi.
+Jeho prvním místem po získání doktorátu byl vědecký pracovník na Cranfield College (nyní Cranfield School of Management na Cranfield University).
 Jeho raný výzkum byl zaměřen především na psychologii starších pracovníků v průmyslu.
-V roce 1988, založil společně se svým synem Nigelem společnost Belbin Associates s cílem publikovat a propagovat svůj výzkum.
+V roce 1988, založil společně se svým synem Nigelem společnost <a href="http://www.belbin.com" target="_blank">Belbin Associates</a> s cílem publikovat a propagovat svůj výzkum.
+<br>
+<span class="font-italic">Zdroj: <a href="https://cs.wikipedia.org/wiki/Meredith_Belbin">Wikipedia</a></span>
 </p>
 
-<h2>Jak se test vyplňuje</h2>
+<h2>O tomto projektu</h2>
+
 <p>
-Test má celkem sedm otázek (sekcí). V každé otázce vyberte ty odpovědi, která vás nejlépe vystihují.
-Můžete vybrat jedno, dvě nebo více tvrzení.
-Vybraná tvrzení poté ohodnoťte bodovým hodnocením tak, že mezi ně rozdělíte vždy deset
-bodů v každé sekci.
+Tato webová aplikace vznikla v roce 2018 jako má semestrální práce na předmět <span class="font-italic">Základy webových aplikací</span> v rámci studia na na FEL ČVUT.
 </p>
-<p>
-Například v jedné sekci označíte tři tvrzení, o kterých si myslíte, že vás vystihují. Jedno vás vystihuje
-dobře, zatím co druhé dvě se k vám hodí jen občas. V tomto případě můžete prvnímu tvrzení přiřadit
-6 nebo 7 bodů a zbývající body rozdělit mezi zbylé dvě. V jiné sekci se můžete rozhodnout, že
-označíte dvě tvrzení, které vás vystihují stejně dobře. Je - li tomu tak, přiřadíte každému tvrzení 5
-bodů. V další sekci zakroužkujete sedm tvrzení, jedno vás vystihuje poněkud více, přidělíte mu 3
-body, druhé tvrzení je přeci jen charakterističtější než zbylá, proto mu dáte 2 body. Pěti zbylým
-zakroužkovaným tvrzením přidělíte po 1 bodu. <strong>Musíte vždy rozdělit všech deset bodů v každé sekci.</strong>
-</p>
+
+<div class="clearfix"></div>
