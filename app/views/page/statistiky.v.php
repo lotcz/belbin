@@ -165,7 +165,7 @@
 
 <br/>
 
-<p class="font-italic">
+<p class="font-italic text-center">
 	TIP: Kliknutím na název role můžete roli v grafu skrýt.
 </p>
 <canvas id="age_totals_chart"></canvas>

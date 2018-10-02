@@ -26,7 +26,12 @@ V roce 1988, založil společně se svým synem Nigelem společnost <a href="htt
 <h2>O tomto projektu</h2>
 
 <p>
-Tato webová aplikace vznikla v roce 2018 jako má semestrální práce na předmět <span class="font-italic">Základy webových aplikací</span> v rámci studia na na FEL ČVUT.
+Tato webová aplikace vznikla v roce 2018 jako má semestrální práce na předmět <span class="font-italic">Základy webových aplikací</span> v rámci studia na FEL ČVUT.
 </p>
+
+<p>
+Můžete mě kontaktovat přes e-mail: <?=$this->secureEmail('karel@zavadil.eu') ?>
+</p>
+
 
 <div class="clearfix"></div>

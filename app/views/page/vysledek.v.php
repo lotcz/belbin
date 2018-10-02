@@ -27,12 +27,12 @@
 				}
 
 			?>
-			
+
 		</table>
 	</div>
 
-	<div class="col-md-6">
-		<canvas id="test_chart"></canvas>			
+	<div class="col-md-6 mt-4">
+		<canvas id="test_chart"></canvas>
 	</div>
 </div>
 
@@ -41,10 +41,7 @@
 	<p>Tolik času vám zabralo vyplnění testu.</p>
 </div>
 
-<div class="p-2">
-	<p class="text-center">
-		<?php
-			$this->renderLink('test', 'Otestovat se znovu &raquo;', 'btn btn-lg btn-success no-print');
-		?>
-	</p>
-</div>
+<p class="no-print">
+	<button class="btn btn-lg btn-primary" onclick="javascript:window.print();">Vytisknout výsledek</button><br/>
+	<span class="font-italic">TIP: Pokud si chcete výsledek testu uchovat ve formátu PDF, zvolte v menu tisku jako výstupní zařízení export do PDF.</span>
+</p>
