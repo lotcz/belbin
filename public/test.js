@@ -2,13 +2,13 @@ function getItemCount(id) {
 	return parseInt($('#answer_'+id).val());
 }
 
-function updateItemBadge(id, cnt) {	
-	var percentage = 0;
-	if (cnt > 0) {		
-		percentage = 0.3 + 0.7 * (cnt / score_per_question);
+function updateItemBadge(id, cnt) {
+	var amount = 0;
+	if (cnt > 0) {
+		amount = 0.3 + 0.7 * (cnt / score_per_question);
 	}
-	percentage = (percentage * 100) + '%';
-	$('#item_badge_'+id).css({width:percentage, height:percentage});	
+	var percentage = (amount * 100) + '%';
+	$('#item_badge_'+id).css({width:percentage, height:percentage, opacity:amount});	
 }
 
 function setItemCount(id, cnt) {
@@ -37,7 +37,7 @@ function getTotalScore() {
   return sum;
 }
 
-function updateTotalScore() {  
+function updateTotalScore() {
 	var score = getTotalScore();
 	var remaining = score_per_question - score;
 	$('#remaining_points').html(remaining);
@@ -46,7 +46,7 @@ function updateTotalScore() {
 	$('#question_progress').attr('aria-valuenow', percentage);
 	if (remaining == 0) {
 		$('#next_question_button').prop('disabled', false);
-	} else {		
+	} else {
 		$('#next_question_button').prop('disabled', true);
 	}
 }
@@ -59,19 +59,19 @@ function minusItem(id) {
 	} else {
 		c -= 1;
 	}
-	setItemCount(id, c);	
+	setItemCount(id, c);
 }
 
 function plusItem(id) {
-	var score = getTotalScore();	
-	var c = getItemCount(id);	
+	var score = getTotalScore();
+	var c = getItemCount(id);
 	var remains = score_per_question - score + c;
 	if (c >= remains) {
 		c = remains;
 	} else {
 		c += 1;
 	}
-	setItemCount(id, c);	
+	setItemCount(id, c);
 }
 
 $(function() {
