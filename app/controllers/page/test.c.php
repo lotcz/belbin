@@ -66,8 +66,6 @@
 							}
 						}
 
-						//z::debug($answered_score);
-
 						if ($answered_score == TestModel::$score_per_question) {
 							ResultModel::deleteAllQuestionResults($this->z->db, $question->ival('belbin_question_id'), $test->ival('belbin_test_id'));
 							foreach ($results as $result) {

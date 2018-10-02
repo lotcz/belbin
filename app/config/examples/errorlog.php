@@ -2,6 +2,6 @@
 
 	return [
 
-		'error_log_path' => '/var/log/belbin.log'
+		'error_log_path' => 'C:/develop/belbin.log'
 
 	];
