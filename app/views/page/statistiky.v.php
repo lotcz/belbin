@@ -25,42 +25,49 @@
 	</div>
 </div>
 
-<br />
+<?php
 
-<p>Průměrná dominance jednotlivých rolí tak, jak vyšla v souhrnu všem testovaným na této stránce:</p>
+	if ($this->getData('total_tests_finished') > 0) {
+		?>
+			<br />
 
-<div class="row">
-	<div class="col-md-4">
-		<table class="test-results">
-			<tr>
-				<th></th>
-				<th>Název role</th>
-				<th>Dominance</th>
-			</tr>
+			<p>Průměrná dominance jednotlivých rolí tak, jak vyšla v souhrnu všem testovaným na této stránce:</p>
 
-			<?php
-
-				$totals = $this->getData('totals');
-
-				foreach ($totals as $result) {
-					?>
+			<div class="row">
+				<div class="col-md-4">
+					<table class="test-results">
 						<tr>
-							<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
-							<td><?=$result->val('belbin_role_name') ?></td>
-							<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
+							<th></th>
+							<th>Název role</th>
+							<th>Dominance</th>
 						</tr>
-					<?php
-				}
 
-			?>
+						<?php
 
-		</table>
-	</div>
+							$totals = $this->getData('totals');
 
-	<div class="col-md-8 mt-4">
-		<canvas id="totals_chart"></canvas>
-	</div>
-</div>
+							foreach ($totals as $result) {
+								?>
+									<tr>
+										<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
+										<td><?=$result->val('belbin_role_name') ?></td>
+										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
+									</tr>
+								<?php
+							}
+
+						?>
+
+					</table>
+				</div>
+
+				<div class="col-md-8 mt-4">
+					<canvas id="totals_chart"></canvas>
+				</div>
+			</div>
+		<?php
+	}
+?>
 
 <br />
 <hr />
@@ -78,22 +85,28 @@
 		Průměrný čas potřebný k dokončení testu:<br/>
 		<strong><?=TestModel::formatDuration($this, $this->getData('average_test_duration_male')) ?></strong><br/>
 		<hr/>
-		<strong>Dominance rolí:</strong><br/>
-		<table class="test-results">
-			<?php
-				$male_totals = $this->getData('totals_male');
-				foreach ($male_totals as $result) {
-					?>
-						<tr>
-							<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
-							<td><?=$result->val('belbin_role_name') ?></td>
-							<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
-						</tr>
-					<?php
-				}
-			?>
-		</table>
-		<canvas id="male_totals_chart"></canvas>
+		<?php
+			if ($this->getData('total_tests_finished_male') > 0) {
+				?>
+					<strong>Dominance rolí:</strong><br/>
+					<table class="test-results">
+						<?php
+							$male_totals = $this->getData('totals_male');
+							foreach ($male_totals as $result) {
+								?>
+									<tr>
+										<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
+										<td><?=$result->val('belbin_role_name') ?></td>
+										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
+									</tr>
+								<?php
+							}
+						?>
+					</table>
+					<canvas id="male_totals_chart"></canvas>
+				<?php
+			}
+		?>
 	</div>
 	<div class="col-md-6 text-center">
 		<h3>Ženy</h3>
@@ -102,22 +115,28 @@
 		Průměrný čas potřebný k dokončení testu:<br/>
 		<strong><?=TestModel::formatDuration($this, $this->getData('average_test_duration_female')) ?></strong><br/>
 		<hr/>
-		<strong>Dominance rolí:</strong><br/>
-		<table class="test-results">
-			<?php
-				$female_totals = $this->getData('totals_female');
-				foreach ($female_totals as $result) {
-					?>
-						<tr>
-							<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
-							<td><?=$result->val('belbin_role_name') ?></td>
-							<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
-						</tr>
-					<?php
-				}
-			?>
-		</table>
-		<canvas id="female_totals_chart"></canvas>
+		<?php
+			if ($this->getData('total_tests_finished_female') > 0) {
+				?>
+					<strong>Dominance rolí:</strong><br/>
+					<table class="test-results">
+						<?php
+							$female_totals = $this->getData('totals_female');
+							foreach ($female_totals as $result) {
+								?>
+									<tr>
+										<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
+										<td><?=$result->val('belbin_role_name') ?></td>
+										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
+									</tr>
+								<?php
+							}
+						?>
+					</table>
+					<canvas id="female_totals_chart"></canvas>
+				<?php
+			}
+		?>
 	</div>
 </div>
 
@@ -144,7 +163,7 @@
 		Nejmladší testovaná osoba:
 	</div>
 	<div class="col-md-2">
-		<strong><?=$this->getData('min_age') ?></strong> let
+		<strong><?=$this->getData('min_age', 0) ?></strong> let
 	</div>
 </div>
 
@@ -153,19 +172,25 @@
 		Průměrný věk:
 	</div>
 	<div class="col-md-2">
-		<strong><?=$this->getData('average_age') ?></strong> let
+		<strong><?=$this->getData('average_age', 0) ?></strong> let
 	</div>
 	<div class="col-md-4">
 		Nestarší testovaná osoba:
 	</div>
 	<div class="col-md-2">
-			<strong><?=$this->getData('max_age') ?></strong> let
+			<strong><?=$this->getData('max_age', 0) ?></strong> let
 	</div>
 </div>
 
-<br/>
+<?php
+	if ($this->getData('total_tests_finished_age') > 0) {
+		?>
+			<br/>
 
-<p class="font-italic text-center">
-	TIP: Kliknutím na název role můžete roli v grafu skrýt.
-</p>
-<canvas id="age_totals_chart"></canvas>
+			<p class="font-italic text-center">
+				TIP: Kliknutím na název role můžete roli v grafu skrýt.
+			</p>
+			<canvas id="age_totals_chart"></canvas>
+		<?php
+	}
+?>
