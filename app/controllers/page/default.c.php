@@ -1,5 +1,5 @@
 <?php
-	//$this->setPageTitle('Belbinův test týmových rolí');
+	$this->setPageTitle('Belbinův test týmových rolí');
 
 	$total_tests_finished = $this->z->db->getRecordCount('belbin_test', 'belbin_test_end_date is not null');
 	$this->setData('total_tests_finished', $total_tests_finished);
