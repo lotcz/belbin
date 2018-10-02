@@ -37,9 +37,9 @@
 						</div>
 
 						<div class="col-sm-8 col-md-9 col-lg-9 col-xl-10 item-label">
-							<label for="answer_<?=$answer->val('belbin_answer_id') ?>">
+							<span class="label">
 								<?=$answer->val('belbin_answer_text') ?>
-							</label>
+							</span>
 						</div>
 					</div>
 				<?php

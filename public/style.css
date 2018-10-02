@@ -20,6 +20,9 @@ body {
     .stats-large .text-large {
       font-size:2.5rem !important;
     }
+    .test .item .label {
+    	font-size:120% !important;
+    }
 }
 
 nav.navbar,
@@ -100,7 +103,7 @@ nav.navbar,
 	margin-bottom:1em;
 }
 
-.test .item label {
+.test .item .label {
 	font-size:150%;
 }
 

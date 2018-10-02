@@ -8,19 +8,17 @@
 <h2>Celkové výsledky</h2>
 
 <div class="row mb-2">
-	<div class="col-md-4">
+	<div class="col-sm-8 col-md-4">
 		Celkový počet dokončených testů:
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-4 col-md-6">
 		<strong><?=$this->getData('total_tests_finished') ?></strong>
 	</div>
-</div>
 
-<div class="row mb-2">
-	<div class="col-md-4">
+	<div class="col-sm-8 col-md-4">
 		Průměrný čas potřebný k dokončení testu:
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-4 col-md-6">
 		<strong><?=TestModel::formatDuration($this, $this->getData('average_duration')) ?></strong>
 	</div>
 </div>
@@ -107,6 +105,7 @@
 				<?php
 			}
 		?>
+		<hr class="d-block d-md-none"/>
 	</div>
 	<div class="col-md-6 text-center">
 		<h3>Ženy</h3>
@@ -137,12 +136,15 @@
 				<?php
 			}
 		?>
+		<hr class="d-block d-md-none"/>
 	</div>
 </div>
 
-<br />
-<hr/>
-<br />
+<div class="d-none d-md-block">
+	<br />
+	<hr/>
+	<br />
+</div>
 
 <h2>Výsledky podle věku</h2>
 
@@ -153,31 +155,35 @@
 </p>
 
 <div class="row mb-2">
-	<div class="col-md-4">
+	<div class="col-8 col-md-4">
 		Celkem nám sdělilo svůj věk:
 	</div>
-	<div class="col-md-2">
+
+	<div class="col-4 col-md-2">
 		<strong><?=$this->getData('total_tests_finished_age') ?></strong> osob
 	</div>
-	<div class="col-md-4">
+
+	<div class="col-8 col-md-4">
 		Nejmladší testovaná osoba:
 	</div>
-	<div class="col-md-2">
+
+	<div class="col-4 col-md-2">
 		<strong><?=$this->getData('min_age', 0) ?></strong> let
 	</div>
-</div>
 
-<div class="row mb-2">
-	<div class="col-md-4">
+	<div class="col-8 col-md-4">
 		Průměrný věk:
 	</div>
-	<div class="col-md-2">
+
+	<div class="col-4 col-md-2">
 		<strong><?=$this->getData('average_age', 0) ?></strong> let
 	</div>
-	<div class="col-md-4">
+
+	<div class="col-8 col-md-4">
 		Nestarší testovaná osoba:
 	</div>
-	<div class="col-md-2">
+
+	<div class="col-4 col-md-2">
 			<strong><?=$this->getData('max_age', 0) ?></strong> let
 	</div>
 </div>
