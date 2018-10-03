@@ -101,7 +101,7 @@
 							}
 						?>
 					</table>
-					<canvas id="male_totals_chart"></canvas>
+					<canvas class="mt-4" id="male_totals_chart"></canvas>
 				<?php
 			}
 		?>
@@ -132,7 +132,7 @@
 							}
 						?>
 					</table>
-					<canvas id="female_totals_chart"></canvas>
+					<canvas class="mt-4" id="female_totals_chart"></canvas>
 				<?php
 			}
 		?>
