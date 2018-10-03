@@ -28,7 +28,7 @@ var totals_options = {
 
 	tooltips: {
 		callbacks: {
-			label: function(item, data) {return ' ' + data.labels[item.index] + ': ' + data.datasets[0].data[item.index] + '%'}
+			label: function(item, data) {return ' ' + data.labels[item.index] + ': ' + data.datasets[0].data[item.index] + ' %'}
 		}
 	}
 
@@ -97,7 +97,7 @@ var age_totals_options = {
 				var item = items[0];
 				return ' Věk: ' + item.xLabel;
 			},
-			label: function(item, data) {return ' ' + data.datasets[item.datasetIndex].label + ': ' + item.yLabel + '%'}
+			label: function(item, data) {return ' ' + data.datasets[item.datasetIndex].label + ': ' + item.yLabel + ' %'}
 		}
 	}
 

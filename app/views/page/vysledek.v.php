@@ -32,7 +32,7 @@
 							<td class="py-1"><div class="role-badge role-badge-small" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
 							<td class="py-1"><?=$result->val('belbin_role_name') ?></td>
 							<td class="py-1 text-center"><?=$result->val('score') ?></td>
-							<td class="py-1"><?=$this->formatDecimal(($result->ival('score') / $total_score)*100, 2) ?>%</td>
+							<td class="py-1"><?=$this->formatDecimal(($result->ival('score') / $total_score)*100, 2) ?>&nbsp;%</td>
 						</tr>
 					<?php
 				}

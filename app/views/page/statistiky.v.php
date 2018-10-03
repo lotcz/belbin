@@ -49,7 +49,7 @@
 									<tr>
 										<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
 										<td><?=$result->val('belbin_role_name') ?></td>
-										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
+										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?>&nbsp;%</td>
 									</tr>
 								<?php
 							}
@@ -95,7 +95,7 @@
 									<tr>
 										<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
 										<td><?=$result->val('belbin_role_name') ?></td>
-										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
+										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?>&nbsp;%</td>
 									</tr>
 								<?php
 							}
@@ -126,7 +126,7 @@
 									<tr>
 										<td><div class="role-badge" style="background-color:<?=$result->val('belbin_role_color') ?>"></div></td>
 										<td><?=$result->val('belbin_role_name') ?></td>
-										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?> %</td>
+										<td><?=$this->formatDecimal($result->fval('percentage'), 2) ?>&nbsp;%</td>
 									</tr>
 								<?php
 							}
