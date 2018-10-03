@@ -37,7 +37,7 @@
 				$this->setPageTitle('Demografické údaje');
 				$this->setData('test_id', $test_id);
 				$this->setData('form_token', $this->z->forms->createXSRFTokenHash('belbin_demographic_form'));
-				$this->includeJS('udaje.js');
+				$this->includeJS('resources/udaje.js');
 		} else {
 			$this->showErrorView('Tento test patří jinému uživateli.');
 		}

@@ -33,4 +33,4 @@
 		]
 	);
 
-	$this->includeJS('front.js', false, 'bottom');
+	$this->includeJS('resources/front.js', false, 'bottom');

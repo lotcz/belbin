@@ -11,7 +11,7 @@ Vybraná tvrzení poté ohodnoťte bodovým hodnocením tak, že mezi ně rozdě
 
 <p>
 <figure class="figure float-right">
-  <img src="<?=$this->url('belbin.jpg') ?>" class="img-thumbnail rounded" alt="Dr. Raymond Meredith Belbin">
+  <img src="<?=$this->url('resources/belbin.jpg') ?>" class="img-thumbnail rounded" alt="Dr. Raymond Meredith Belbin">
   <figcaption class="figure-caption">Dr. Raymond Meredith Belbin</figcaption>
 </figure>
 Autorem testu je britský výzkumník a teoretik managementu Dr. Raymond Meredith Belbin, nejlépe známý pro jeho práci o manažerských týmech.
@@ -27,6 +27,10 @@ V roce 1988, založil společně se svým synem Nigelem společnost <a href="htt
 
 <p>
 Tato webová aplikace vznikla v roce 2018 jako má semestrální práce na předmět <span class="font-italic">Základy webových aplikací</span> v rámci studia na FEL ČVUT.
+</p>
+
+<p>
+Zdrojové kódy jsou pod GNU GPL licencí volně dostupné na <a href="http://github.com/lotcz/belbin" target="_blank">GitHub</a>.
 </p>
 
 <p>

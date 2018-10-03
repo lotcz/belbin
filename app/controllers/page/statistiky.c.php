@@ -174,4 +174,4 @@
 		'bottom'
 	);
 
-	$this->includeJS('statistiky.js', false, 'bottom');
+	$this->includeJS('resources/statistiky.js', false, 'bottom');

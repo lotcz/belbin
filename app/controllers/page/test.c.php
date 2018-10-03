@@ -96,7 +96,7 @@
 				}
 
 				$this->insertJS(['score_per_question' => TestModel::$score_per_question]);
-				$this->includeJS('test.js');
+				$this->includeJS('resources/test.js');
 
 				// set answer score if this question was already answered
 				$existing_results = ResultModel::loadAllForTestQuestion($this->z->db, $test->ival('belbin_test_id'), $question->ival('belbin_question_id'));

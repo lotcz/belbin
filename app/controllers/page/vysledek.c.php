@@ -27,7 +27,7 @@
 							]
 						]
 					);
-					$this->includeJS('result.js', false, 'bottom');
+					$this->includeJS('resources/result.js', false, 'bottom');
 				} else {
 					$this->showErrorView('Tento test patří jinému uživateli.');
 				}
