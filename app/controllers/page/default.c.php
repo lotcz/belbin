@@ -1,4 +1,6 @@
 <?php
+	require_once __DIR__ . '/../../models/test.m.php';
+	
 	$this->setPageTitle('Belbinův test týmových rolí');
 
 	$total_tests_finished = $this->z->db->getRecordCount('belbin_test', 'belbin_test_end_date is not null');
@@ -14,11 +16,7 @@
 	/* orderby */	'score DESC'
 	);
 
-	$total_score = zModel::sum($statistics, 'score');
-
-	foreach ($statistics as $total) {
-		$total->set('percentage', round(z::safeDivide($total->ival('score'), $total_score) * 100, 2));
-	}
+	TestModel::addPercentageToTestResults($statistics);
 
 	$this->insertJS(
 		[
