@@ -87,7 +87,7 @@
 			if ($this->getData('total_tests_finished_male') > 0) {
 				?>
 					<strong>Dominance rolí:</strong><br/>
-					<table class="test-results">
+					<table class="test-results text-left">
 						<?php
 							$male_totals = $this->getData('totals_male');
 							foreach ($male_totals as $result) {
@@ -118,7 +118,7 @@
 			if ($this->getData('total_tests_finished_female') > 0) {
 				?>
 					<strong>Dominance rolí:</strong><br/>
-					<table class="test-results">
+					<table class="test-results text-left">
 						<?php
 							$female_totals = $this->getData('totals_female');
 							foreach ($female_totals as $result) {
