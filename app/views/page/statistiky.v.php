@@ -8,14 +8,14 @@
 <h2>Celkové výsledky</h2>
 
 <div class="row mb-2">
-	<div class="col-sm-8 col-md-4">
+	<div class="col-sm-8 col-md-6 col-lg-4">
 		Celkový počet dokončených testů:
 	</div>
 	<div class="col-sm-4 col-md-6">
 		<strong><?=$this->getData('total_tests_finished') ?></strong>
 	</div>
 
-	<div class="col-sm-8 col-md-4">
+	<div class="col-sm-8 col-md-6 col-lg-4">
 		Průměrný čas potřebný k dokončení testu:
 	</div>
 	<div class="col-sm-4 col-md-6">

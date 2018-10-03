@@ -5,7 +5,7 @@
 		'site_title' => 'Belbinův test týmových rolí',
 		'site_description' => 'Belbinův test týmových rolí on-line. Otestujte se on-line a zdarma. Zjistěte, jaké týmové role jsou u Vás dominantní.',
 		'site_author' => 'Karel Zavadil',
-		'site_keywords' => 'belbin, belbinův test, belbinův test týmových rolí, on-line test týmových rolí',
+		'site_keywords' => 'belbin, raymond belbin, raymond meredith belbin, belbinův test, belbinův test týmových rolí, on-line test týmových rolí, tým, týmové role',
 
 		// will be used to create all link urls, no trailing slash
 		'base_url' => 'http://localhost/belbin/public',
