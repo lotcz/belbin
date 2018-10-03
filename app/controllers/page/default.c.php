@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__ . '/../../models/test.m.php';
-	
+
 	$this->setPageTitle('Belbinův test týmových rolí');
 
 	$total_tests_finished = $this->z->db->getRecordCount('belbin_test', 'belbin_test_end_date is not null');
@@ -28,7 +28,8 @@
 				]],
 				'labels' => zModel::columnAsArray($statistics, 'belbin_role_name')
 			]
-		]
+		],
+		'bottom'
 	);
 
 	$this->includeJS('resources/front.js', false, 'bottom');
