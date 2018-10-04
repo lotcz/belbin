@@ -15,13 +15,14 @@
 					$this->setData('results', $results);
 					$this->setData('total_score', $test->totalScore());
 					$this->setData('test_duration', $test->ival('belbin_test_duration'));
+					$results_colors = zModel::columnAsArray($results, 'belbin_role_color');
 					$this->insertJS(
 						[
 							'chart_data' => [
 								'datasets' => [[
 									'data' => zModel::columnAsArray($results, 'score', 'i'),
-									'backgroundColor' => zModel::columnAsArray($results, 'belbin_role_color'),
-									'borderWidth' => 0,
+									'backgroundColor' => $results_colors,
+									'borderColor' => $results_colors,
 								]],
 								'labels' => zModel::columnAsArray($results, 'belbin_role_name')
 							]

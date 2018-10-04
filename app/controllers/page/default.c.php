@@ -17,14 +17,14 @@
 	);
 
 	TestModel::addPercentageToTestResults($statistics);
-
+	$statistics_colors = zModel::columnAsArray($statistics, 'belbin_role_color');
 	$this->insertJS(
 		[
 			'chart_data' => [
 				'datasets' => [[
 					'data' => zModel::columnAsArray($statistics, 'percentage', 'f'),
-					'backgroundColor' => zModel::columnAsArray($statistics, 'belbin_role_color'),
-					'borderWidth' => 0
+					'backgroundColor' => $statistics_colors,
+					'borderColor' => $statistics_colors
 				]],
 				'labels' => zModel::columnAsArray($statistics, 'belbin_role_name')
 			]

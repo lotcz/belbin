@@ -20,13 +20,14 @@
 	TestModel::addPercentageToTestResults($totals);
 	$this->setData('totals', $totals);
 
+	$totals_colors = zModel::columnAsArray($totals, 'belbin_role_color');
 	$this->insertJS(
 		[
 			'totals_chart_data' => [
 				'datasets' => [[
 					'data' => zModel::columnAsArray($totals, 'percentage', 'f'),
-					'backgroundColor' => zModel::columnAsArray($totals, 'belbin_role_color'),
-					'borderWidth' => 0
+					'backgroundColor' => $totals_colors,
+					'borderColor' => $totals_colors
 				]],
 				'labels' => zModel::columnAsArray($totals, 'belbin_role_name')
 			]
@@ -59,13 +60,14 @@
 				[PDO::PARAM_INT]														/* types */
 			);
 			TestModel::addPercentageToTestResults($totals_male);
+			$totals_male_colors = zModel::columnAsArray($totals_male, 'belbin_role_color');
 			$this->insertJS(
 				[
 					'totals_male_chart_data' => [
 						'datasets' => [[
 							'data' => zModel::columnAsArray($totals_male, 'percentage', 'f'),
-							'backgroundColor' => zModel::columnAsArray($totals_male, 'belbin_role_color'),
-							'borderWidth' => 0
+							'backgroundColor' => $totals_male_colors,
+							'borderColor' => $totals_male_colors
 						]],
 						'labels' => zModel::columnAsArray($totals_male, 'belbin_role_name')
 					]
@@ -85,13 +87,14 @@
 				[PDO::PARAM_INT]														/* types */
 			);
 			TestModel::addPercentageToTestResults($totals_female);
+			$totals_female_colors = zModel::columnAsArray($totals_female, 'belbin_role_color');
 			$this->insertJS(
 				[
 					'totals_female_chart_data' => [
 						'datasets' => [[
 							'data' => zModel::columnAsArray($totals_female, 'percentage', 'f'),
-							'backgroundColor' => zModel::columnAsArray($totals_female, 'belbin_role_color'),
-							'borderWidth' => 0
+							'backgroundColor' => $totals_female_colors,
+							'borderColor' => $totals_female_colors
 						]],
 						'labels' => zModel::columnAsArray($totals_female, 'belbin_role_name')
 					]
