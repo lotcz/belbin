@@ -1,11 +1,11 @@
 <?php
 	require_once __DIR__ . '/../../../models/question.m.php';
 	require_once __DIR__ . '/../../../models/answer.m.php';
-		
-	$form = new zForm('belbin_question');	
+
+	$form = new zForm('belbin_question');
 	$form->render_wrapper = true;
-	
-	$form->add([		
+
+	$form->add([
 		[
 			'name' => 'belbin_question_id',
 			'type' => 'hidden'
@@ -25,7 +25,7 @@
 			'validations' => [['type' => 'length', 'param' => 1]]
 		]
 	]);
-	
+
 	$this->z->forms->processForm($form, 'QuestionModel');
 
 	$form->addField(
@@ -37,20 +37,20 @@
 	);
 
 	$question_id = z::parseInt($this->getPath(-1));
-	
-	$table = new zTable('answers_table', $id_field = 'belbin_answer_id', 'admin/default/default/belbin_answer/edit/%d');
-	$table->add([		
+
+	$table = new zTable('answers_table', $id_field = 'belbin_answer_id', 'admin/default/default/belbin-answer/edit/%d');
+	$table->add([
 		[
 			'name' => 'belbin_answer_index',
-			'label' => 'Index'			
+			'label' => 'Index'
 		],
 		[
 			'name' => 'belbin_answer_text',
-			'label' => 'Text'			
+			'label' => 'Text'
 		]
 	]);
-	$table->data = AnswerModel::loadAllForQuestion($this->db, $question_id);
-	
-	$this->setData('table', $table);	
+	$table->data = AnswerModel::loadAllForQuestion($this->z->db, $question_id);
+
+	$this->setData('table', $table);
 	$this->setData('form', $form);
 	$this->setData('question_id', $question_id);

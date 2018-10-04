@@ -3,10 +3,10 @@
 
 	$this->setPageTitle('Odpověď: editace');
 	$this->setPageTemplate('admin');
-	
+
 	$form = new zForm('belbin_answer');
 	$form->entity_title = 'Odpověď';
-	$form->render_wrapper = true;		
+	$form->render_wrapper = true;
 	$form->add([
 		[
 			'name' => 'belbin_answer_id',
@@ -16,16 +16,16 @@
 			'name' => 'belbin_answer_question_id',
 			'label' => 'Otázka',
 			'type' => 'select',
-			'select_table' => 'belbin_questions',
+			'select_table' => 'belbin_question',
 			'select_id_field' => 'belbin_question_id',
-			'select_label_field' => 'belbin_question_text'			
+			'select_label_field' => 'belbin_question_text'
 		],
 		[
 			'name' => 'belbin_answer_index',
 			'label' => 'Index',
 			'type' => 'text',
-			'validations' => [['type' => 'integer', 'param' => 0]]		
-		],		
+			'validations' => [['type' => 'integer', 'param' => 0]]
+		],
 		[
 			'name' => 'belbin_answer_text',
 			'label' => 'Text',
@@ -36,14 +36,14 @@
 			'name' => 'belbin_answer_role_id',
 			'label' => 'Týmová role',
 			'type' => 'select',
-			'select_table' => 'belbin_roles',
+			'select_table' => 'belbin_role',
 			'select_id_field' => 'belbin_role_id',
 			'select_label_field' => 'belbin_role_name'
 		],
 	]);
-	
-	$answer = new AnswerModel($this->db);
-	
+
+	$answer = new AnswerModel($this->z->db);
+
 	if (z::isPost()) {
 		// UPDATE or INSERT
 		if ($form->processInput($_POST)) {
@@ -61,18 +61,18 @@
 	} elseif ($this->z->forms->pathAction() == 'edit') {
 		// coming to edit
 		$answer->loadById($this->z->forms->pathParam());
-		
+
 	} elseif ($this->z->forms->pathAction() == 'delete') {
 		// DELETE
-		if ($answer->deleteById(z::parseInt($this->z->forms->pathParam()))) {			
+		if ($answer->deleteById(z::parseInt($this->z->forms->pathParam()))) {
 			$this->redirectBack();
 		}
 	} else {
 		// coming to create new
 		$answer->set('belbin_answer_question_id', z::get('question_id'));
 	}
-	
-	$form->prepare($this->z->core->db, $answer);
+
+	$form->prepare($this->z->db, $answer);
 
 	$form->addField(
 		[
@@ -83,4 +83,3 @@
 	);
 
 	$this->z->core->setData('form', $form);
-	

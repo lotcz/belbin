@@ -1,18 +1,18 @@
 <?php
 
-	$this->setPageTitle('Otázky');	
+	$this->setPageTitle('Otázky');
 	$this->renderAdminTable(
-		'belbin_questions', 		
 		'belbin_question',
-		[		
+		'belbin_question',
+		[
 			[
 				'name' => 'belbin_question_index',
-				'label' => 'Index'			
+				'label' => 'Index'
 			],
 			[
 				'name' => 'belbin_question_text',
-				'label' => 'Text'			
-			]			
+				'label' => 'Text'
+			]
 		],
 		[
 			[

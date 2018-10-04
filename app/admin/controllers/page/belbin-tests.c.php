@@ -1,10 +1,10 @@
 <?php
 
-	$this->setPageTitle('Výsledky');	
-	$fields = [		
+	$this->setPageTitle('Výsledky');
+	$fields = [
 		[
 			'name' => 'belbin_test_id',
-			'label' => 'ID'			
+			'label' => 'ID'
 		],
 		[
 			'name' => 'belbin_test_start_date',
@@ -18,18 +18,18 @@
 		],
 		[
 			'name' => 'customer_name',
-			'label' => 'User'			
+			'label' => 'User'
 		],
 		[
 			'name' => 'customer_email',
-			'label' => 'User Email'			
+			'label' => 'User Email'
 		]
 	];
-	
+
 	$form = new zForm('belbin_test', '', 'POST', 'form-inline');
 	$form->type = 'inline';
 	$form->render_wrapper = true;
-	
+
 	$filter_fields = [
 		[
 			'name' => 'search_text',
@@ -38,7 +38,7 @@
 			'filter_fields' => ['customer_name', 'customer_email', 'belbin_test_start_date']
 		]
 	];
-	
+
 	$form->add($filter_fields);
 	$form->addField([
 		'name' => 'form_filter_button',
@@ -48,7 +48,7 @@
 			['type' => 'link', 'label' => 'Reset', 'css' => 'btn btn-default', 'link_url' => $this->z->core->raw_path]
 		]
 	]);
-	
+
 	if (z::isPost()) {
 		$form->processInput($_POST);
 	}
@@ -59,6 +59,6 @@
 	if (isset($filter_fields)) {
 		$table->filter_form = $form;
 	}
-	$table->prepare($this->z->core->db);
+	$table->prepare($this->z->db);
 	$this->z->core->setData('table', $table);
 	$this->z->core->setPageTemplate('admin');

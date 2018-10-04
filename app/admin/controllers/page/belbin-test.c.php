@@ -2,17 +2,16 @@
 	require_once __DIR__ . '/../../../models/test.m.php';
 
 	$this->renderAdminForm(
-		'belbin_test',
 		'TestModel',
 		[
 			[
-				'name' => 'belbin_test_customer_id',
+				'name' => 'belbin_test_user_id',
 				'label' => 'Uživatel',
 				'type' => 'foreign_key_link',
-				'link_table' => 'customers',
-				'link_template' => 'admin/default/default/customer/edit/%d',
-				'link_id_field' => 'customer_id',
-				'link_label_field' => 'customer_name'
+				'link_table' => 'user',
+				'link_template' => 'admin/default/default/user/edit/%d',
+				'link_id_field' => 'user_id',
+				'link_label_field' => 'user_name'
 			],
 			[
 				'name' => 'belbin_test_start_date',
@@ -24,7 +23,7 @@
 				'name' => 'belbin_test_end_date',
 				'label' => 'End date',
 				'type' => 'date',
-				'validations' => [['type' => 'date', 'param' => 1]]
+				'validations' => [['type' => 'date', 'param' => true]]
 			]
 		]
 	);

@@ -9,11 +9,11 @@ Vybraná tvrzení poté ohodnoťte bodovým hodnocením tak, že mezi ně rozdě
 
 <h2>O autorovi</h2>
 
-<p>
 <figure class="figure float-right">
   <img src="<?=$this->url('resources/belbin.jpg') ?>" class="img-thumbnail rounded" alt="Dr. Raymond Meredith Belbin">
   <figcaption class="figure-caption">Dr. Raymond Meredith Belbin</figcaption>
 </figure>
+<p>
 Autorem testu je britský výzkumník a teoretik managementu Dr. Raymond Meredith Belbin, nejlépe známý pro jeho práci o manažerských týmech.
 Narodil se v roce 1926. Věnoval se studiu klasické psychologie na Clare College v Cambridgi.
 Jeho prvním místem po získání doktorátu byl vědecký pracovník na Cranfield College (nyní Cranfield School of Management na Cranfield University).
@@ -34,8 +34,10 @@ Zdrojové kódy jsou pod GNU GPL licencí volně dostupné na <a href="http://gi
 </p>
 
 <p>
-Můžete mě kontaktovat přes e-mail: <?=$this->secureEmail('karel@zavadil.eu') ?>
+Můžete mě kontaktovat přes e-mail:
+  <?php
+    $this->renderSecureEmailLink('karel@zavadil.eu');
+  ?>
 </p>
-
 
 <div class="clearfix"></div>
