@@ -15,14 +15,6 @@
 			'name' => 'belbin_test_end_date',
 			'label' => 'End date',
 			'type' => 'datetime'
-		],
-		[
-			'name' => 'customer_name',
-			'label' => 'User'
-		],
-		[
-			'name' => 'customer_email',
-			'label' => 'User Email'
 		]
 	];
 
@@ -54,7 +46,7 @@
 	}
 	$this->z->core->setData('form', $form);
 
-	$table = new zAdminTable('viewBelbinTests', 'belbin_test');
+	$table = new zAdminTable('belbin_test', 'belbin_test');
 	$table->add($fields);
 	if (isset($filter_fields)) {
 		$table->filter_form = $form;
