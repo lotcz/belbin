@@ -1,4 +1,6 @@
 var options = {
+	responsive: true,
+	
 	legend : {
 		display: false
 	},

@@ -7,13 +7,13 @@
 	$this->setData('total_tests_finished', $total_tests_finished);
 
 	$statistics = zModel::select(
-	/* db */		$this->z->db,
-	/* table */		'viewBelbinTestResultsStatistics',
-	/* where */		null,
-	/* bindings */	null,
-	/* types */		null,
-	/* paging */	null,
-	/* orderby */	'score DESC'
+		$this->z->db, 											/* db */
+		'viewBelbinTestResultsStatistics',	/* table */
+		null, 															/* where */
+	 	null, 															/* bindings */
+		null, 															/* types */
+		null, 															/* paging */
+		'score DESC' 												/* orderby */
 	);
 
 	TestModel::addPercentageToTestResults($statistics);
@@ -24,6 +24,7 @@
 				'datasets' => [[
 					'data' => zModel::columnAsArray($statistics, 'percentage', 'f'),
 					'backgroundColor' => $statistics_colors,
+					'borderWidth' => 1,
 					'borderColor' => $statistics_colors
 				]],
 				'labels' => zModel::columnAsArray($statistics, 'belbin_role_name')

@@ -29,7 +29,7 @@
     </ul>
 
     <ul class="navbar-nav">
-      <a class="btn btn-success" href="<?=$this->url('test') ?>" role="button">Zahájit test &raquo;</a>
+      <a class="btn btn-success" href="<?=$this->url('test') ?>" rel="nofollow" role="button">Zahájit test &raquo;</a>
     </ul>
   </div>
 </nav>

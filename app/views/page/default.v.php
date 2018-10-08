@@ -1,7 +1,13 @@
-<h2 class="display-5">Otestujte se online a zdarma</h2>
-<p>Pracujete v týmu a zajímá Vás, jaké týmové role jsou pro Vás nejvhodnější?
-Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše dominantní stránky, a co naopak není Váš šálek kávy.</p>
-<p><a class="btn btn-success btn-lg" href="<?=$this->url('test') ?>" role="button">Zahájit test &raquo;</a></p>
+<h2 class="display-5">Otestujte se na dominanci týmových rolí</h2>
+<p>
+	Pracujete v týmu a zajímá Vás, jaké týmové role jsou pro Vás nejvhodnější?
+	Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše dominantní stránky, a co naopak není Váš šálek kávy.
+	Vyplnění testu zabere kolem 10-ti minut, je kompletně zdarma a bez nutnosti registrace.
+</p>
+
+<p>
+	<a class="btn btn-success btn-lg" href="<?=$this->url('test') ?>" rel="nofollow" role="button">Zahájit test &raquo;</a>
+</p>
 
 <hr>
 
@@ -15,12 +21,17 @@ Vypracujte si Belbinův test týmových rolí a zjistíte, jaké jsou vaše domi
 					<h2>Statistiky</h2>
 					<p>
 						K dnešnímu dni byl test vyplněn celkem <strong><?=$total_tests_finished ?></strong>-krát.
-						Vpravo se můžete podívat na celkové zastoupení jednotlivých týmových rolí.
+						Po vyplnění testu s námi můžete dobrovolně sdílet anonymní údaje o Vašem věku a pohlaví, ze kterých potom vytváříme jednoduché statistiky.
 					</p>
-					<p><a class="btn btn-primary" href="<?=$this->url('statistiky') ?>" role="button">Více statistik &raquo;</a></p>
+					<p>
+						<a class="btn btn-primary" href="<?=$this->url('statistiky') ?>" role="button">Více statistik &raquo;</a>
+					</p>
 				</div>
 				<div class="col-md-6">
-					<canvas id="statistics_chart"></canvas>
+					<figure class="figure border rounded p-3">
+						<canvas id="statistics_chart"></canvas>
+						<figcaption class="figure-caption">Statistika: Celková dominance týmových rolí.</figcaption>
+					</figure>
 				</div>
 			</div>
 		<?php

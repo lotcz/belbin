@@ -27,6 +27,7 @@
 				'datasets' => [[
 					'data' => zModel::columnAsArray($totals, 'percentage', 'f'),
 					'backgroundColor' => $totals_colors,
+					'borderWidth' => 1,
 					'borderColor' => $totals_colors
 				]],
 				'labels' => zModel::columnAsArray($totals, 'belbin_role_name')
@@ -67,6 +68,7 @@
 						'datasets' => [[
 							'data' => zModel::columnAsArray($totals_male, 'percentage', 'f'),
 							'backgroundColor' => $totals_male_colors,
+							'borderWidth' => 1,
 							'borderColor' => $totals_male_colors
 						]],
 						'labels' => zModel::columnAsArray($totals_male, 'belbin_role_name')
@@ -94,6 +96,7 @@
 						'datasets' => [[
 							'data' => zModel::columnAsArray($totals_female, 'percentage', 'f'),
 							'backgroundColor' => $totals_female_colors,
+							'borderWidth' => 1,
 							'borderColor' => $totals_female_colors
 						]],
 						'labels' => zModel::columnAsArray($totals_female, 'belbin_role_name')
@@ -155,6 +158,7 @@
 				'label' => $current_role->val('belbin_role_name'),
 				'backgroundColor' => $current_role->val('belbin_role_color'),
 				'fill' => true,
+				'borderWidth' => 1,
 				'borderColor' => $current_role->val('belbin_role_color'),
 				'pointRadius' => 0,
 				//'pointBackgroundColor' => 'transparent'

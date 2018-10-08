@@ -1,5 +1,5 @@
 <p>
-	Na této stránce si můžete prohlédnout nejrůznější statistiky o úspěšně dokončených testech.
+	Na této stránce si můžete prohlédnout statistiky o dokončených testech.
 	Pokud jste si ještě test nevyplnili, můžete tak učinit <a href="<?=$this->url('test') ?>" role="button">zde</a>.
 </p>
 
