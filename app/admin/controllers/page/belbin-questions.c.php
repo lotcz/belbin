@@ -3,7 +3,6 @@
 	$this->setPageTitle('Otázky');
 	$this->renderAdminTable(
 		'belbin_question',
-		'belbin_question',
 		[
 			[
 				'name' => 'belbin_question_index',

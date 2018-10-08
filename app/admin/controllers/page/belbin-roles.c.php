@@ -3,7 +3,6 @@
 	$this->setPageTitle('Týmové role');
 	$this->renderAdminTable(
 		'belbin_role',
-		'belbin_role',
 		[
 			[
 				'name' => 'belbin_role_name',
