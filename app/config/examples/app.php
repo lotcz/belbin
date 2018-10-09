@@ -4,7 +4,7 @@
 
 		// this is application version
 		// integer part should be identical with GIT branch name
-		'version' => 3.5,
+		'version' => 3.6,
 
     // required zEngine major version (integer value)
 		'require_z_version' => 3,

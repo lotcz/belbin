@@ -32,7 +32,7 @@
 		[
 			'name' => 'form_buttons',
 			'type' => 'buttons',
-			'buttons' => $this->z->admin->getAdminFormButtons($form)
+			'buttons' => $this->z->admin->getAdminFormButtons($form, 'QuestionModel')
 		]
 	);
 
