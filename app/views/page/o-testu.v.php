@@ -21,7 +21,7 @@ Jeho prvním místem po získání doktorátu byl vědecký pracovník na Cranfi
 Jeho raný výzkum byl zaměřen především na psychologii starších pracovníků v průmyslu.
 V roce 1988, založil společně se svým synem Nigelem společnost <a href="http://www.belbin.com" target="_blank">Belbin Associates</a> s cílem publikovat a propagovat svůj výzkum.
 <br>
-<span class="font-italic">Zdroj: <a href="https://cs.wikipedia.org/wiki/Meredith_Belbin">Wikipedia</a></span>
+<span class="font-italic">Zdroj: <a href="https://cs.wikipedia.org/wiki/Meredith_Belbin" target="_blank">Wikipedia</a></span>
 </p>
 
 <h2>O tomto projektu</h2>
