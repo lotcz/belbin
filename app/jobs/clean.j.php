@@ -1,6 +1,15 @@
 <?php
 	$this->requireModule('auth');
 
+	// delete unfinished tests older than 24 hours
+	$deadline = time()-(60*60*24);
+	$this->z->db->executeDeleteQuery(
+		'belbin_test',
+		'belbin_test_start_date <= ? and belbin_test_end_date is null',
+		[z::mysqlTimestamp($deadline)],
+		[PDO::PARAM_INT]
+	);
+
 	// load expired sessions
 	$sessions = UserSessionModel::select(
 		$this->z->db, 								/* db */
@@ -15,26 +24,18 @@
 	foreach ($sessions as $session) {
 		$user = new UserModel($this->z->db, $session->ival('user_session_user_id'));
 
-		// delete unfinished tests
-		$this->z->db->executeDeleteQuery(
-			'belbin_test',
-			'belbin_test_user_id = ? and belbin_test_end_date is null',
-			$user->ival('user_id'),
-			[PDO::PARAM_INT]
-		);
-
 		// delete session
 		$session->delete();
 
-		// delete user, if anonymous and doesn't have any (finished) tests
+		// delete user, if anonymous and doesn't have any tests
 		if ($user->isAnonymous()) {
-			$finished_tests_count = $this->z->db->getRecordCount(
+			$tests_count = $this->z->db->getRecordCount(
 				'belbin_test',
 				'belbin_test_user_id = ?',
-				$user->ival('user_id'),
+				[$user->ival('user_id')],
 			 	[PDO::PARAM_INT]
 			);
-			if ($finished_tests_count == 0) {
+			if ($tests_count == 0) {
 				$user->delete();
 			}
 		}
