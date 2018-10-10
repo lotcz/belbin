@@ -1,6 +1,11 @@
 <?php
-  $q_index = $this->getData('question')->ival('belbin_question_index');
-  $q_total = z::parseInt($this->getData('questions_count'));
+  $question = $this->getData('question');
+  if (isset($question)) {
+    $q_index = $question->ival('belbin_question_index');
+  } else {
+    $q_index = 0;
+  }
+  $q_total = $this->getData('questions_count', 0);
 ?>
 
 <nav class="navbar navbar-expand-md navbar-dark sticky-top">
@@ -17,7 +22,7 @@
           <span class="navbar-text">Otázky: <?= $q_index . '/' . $q_total ?></span>
           <div style="margin-left:1rem;display:inline-block;width:50px">
             <div class="progress">
-              <div id="test_progress" class="progress-bar bg-success" role="progressbar" style="display:block;width:<?=($q_index/$q_total)*100?>%" aria-valuenow="<?=$q_index ?>" aria-valuemin="1" aria-valuemax="<?=$q_total ?>"></div>
+              <div id="test_progress" class="progress-bar bg-success" role="progressbar" style="display:block;width:<?=z::safeDivide($q_index,$q_total)*100 ?>%" aria-valuenow="<?=$q_index ?>" aria-valuemin="1" aria-valuemax="<?=$q_total ?>"></div>
             </div>
           </div>
         </div>
