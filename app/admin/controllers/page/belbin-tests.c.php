@@ -19,7 +19,7 @@
 				'name' => 'belbin_test_end_date',
 				'label' => 'End date',
 				'type' => 'datetime'
-			],		
+			],
 			[
 				'name' => 'belbin_test_start_date',
 				'label' => 'Start date',
@@ -44,14 +44,15 @@
 				'name' => 'belbin_test_sex',
 				'label' => 'Sex',
 				'type' => 'custom',
-				'custom_function' => 'TestModel::formatSexSimple'			
+				'custom_function' => 'TestModel::formatSexSimple'
 			]
 		],
 		[
-			'name' => 'search_text',
-			'label' => 'Search',
-			'type' => 'text',
-			'filter_fields' => ['customer_name', 'customer_email', 'belbin_test_start_date']
+			[
+				'name' => 'search_text',
+				'label' => 'Search',
+				'type' => 'text',
+				'filter_fields' => ['customer_name', 'customer_email', 'belbin_test_start_date']
+			]
 		]
-
 	);
