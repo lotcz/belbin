@@ -128,4 +128,45 @@ class TestModel extends zModel {
 
 	}
 
+	static function formatDurationSimple($duration_in_seconds) {
+		if (isset($duration_in_seconds)) {
+			$result = [];
+			$minutes = 0;
+			$remainder = $duration_in_seconds;
+
+			$minutes = floor($duration_in_seconds / 60);
+			if ($minutes > 0) {
+				if ($minutes == 1) {
+					$result[] ='1 minute';
+				} else {
+					$result[] = sprintf('%d minutes', $minutes);
+				}
+				$remainder = $duration_in_seconds - ($minutes*60);
+			}
+
+			$seconds = floor($remainder);
+			if ($seconds == 0) {
+				$result[] = sprintf('%d seconds', 0);
+			} elseif ($seconds == 1) {
+				$result[] = sprintf('1 second');
+			} else {
+				$result[] = sprintf('%d seconds', $seconds);
+			}
+
+			return implode(' and ', $result);
+		} else {
+			return '';
+		}
+	}
+
+	static function formatSexSimple($sex_id) {
+		if (!isset($sex_id)) {
+			return '';
+		} elseif ($sex_id == Self::$male_sex_id) {
+			return 'Male';
+		} else {
+			return 'Female';
+		}
+	}
+
 }
