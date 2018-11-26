@@ -180,7 +180,7 @@
 	</div>
 
 	<div class="col-8 col-md-4">
-		Nestarší testovaná osoba:
+		Nejstarší testovaná osoba:
 	</div>
 
 	<div class="col-4 col-md-2">
