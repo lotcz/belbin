@@ -1,3 +1,1 @@
 app/config/*.php
-public/.htaccess
-sql/secret.sql

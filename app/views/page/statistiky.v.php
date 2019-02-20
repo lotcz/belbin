@@ -16,10 +16,10 @@
 	</div>
 
 	<div class="col-sm-8 col-md-6 col-lg-5 col-xl-4">
-		Průměrný čas potřebný k dokončení testu:
+		Medián trvání testu:
 	</div>
 	<div class="col-sm-4 col-md-6">
-		<strong><?=TestModel::formatDuration($this, $this->getData('average_duration')) ?></strong>
+		<strong><?=TestModel::formatDuration($this, $this->getData('median_duration')) ?></strong>
 	</div>
 </div>
 
@@ -80,8 +80,8 @@
 		<h3>Muži</h3>
 		Celkový počet dokončených testů:<br/>
 		<strong><?=$this->getData('total_tests_finished_male') ?></strong><br/>
-		Průměrný čas potřebný k dokončení testu:<br/>
-		<strong><?=TestModel::formatDuration($this, $this->getData('average_test_duration_male')) ?></strong><br/>
+		Medián trvání testu:<br/>
+		<strong><?=TestModel::formatDuration($this, $this->getData('median_test_duration_male')) ?></strong><br/>
 		<hr/>
 		<?php
 			if ($this->getData('total_tests_finished_male') > 0) {
@@ -111,8 +111,8 @@
 		<h3>Ženy</h3>
 		Celkový počet dokončených testů:<br/>
 		<strong><?=$this->getData('total_tests_finished_female') ?></strong><br/>
-		Průměrný čas potřebný k dokončení testu:<br/>
-		<strong><?=TestModel::formatDuration($this, $this->getData('average_test_duration_female')) ?></strong><br/>
+		Medián trvání testu:<br/>
+		<strong><?=TestModel::formatDuration($this, $this->getData('median_test_duration_female')) ?></strong><br/>
 		<hr/>
 		<?php
 			if ($this->getData('total_tests_finished_female') > 0) {
@@ -180,11 +180,19 @@
 	</div>
 
 	<div class="col-8 col-md-4">
-		Nestarší testovaná osoba:
+		Nejstarší testovaná osoba:
 	</div>
 
 	<div class="col-4 col-md-2">
 			<strong><?=$this->getData('max_age', 0) ?></strong> let
+	</div>
+
+	<div class="col-8 col-md-4">
+		Medián věku:
+	</div>
+
+	<div class="col-4 col-md-2">
+		<strong><?=$this->getData('median_age', 0) ?></strong> let
 	</div>
 </div>
 
