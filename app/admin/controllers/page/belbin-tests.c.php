@@ -71,7 +71,7 @@
 
 	$default_paging = $this->z->tables->createPaging();
 	$default_paging->sorting_items = [
-		'default' => 'belbin_test_end_date DESC, belbin_test_start_date DESC'
+		'default' => 'belbin_test_start_date DESC'
 	];
 	$default_paging->active_sorting = 'default';
 
