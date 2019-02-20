@@ -68,6 +68,14 @@
 	if (isset($filter_fields)) {
 		$table->filter_form = $form;
 	}
-	$table->prepare($this->z->db);
+
+	$default_paging = $this->z->tables->createPaging();
+	$default_paging->sorting_items = [
+		'default' => 'belbin_test_end_date DESC, belbin_test_start_date DESC'
+	];
+	$default_paging->active_sorting = 'default';
+
+	$table->prepare($this->z->db, $default_paging);
+
 	$this->z->core->setData('table', $table);
 	$this->z->core->setPageTemplate('admin');
