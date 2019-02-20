@@ -1,59 +1,37 @@
 <?php
 	require_once __DIR__ . '/../../../models/test.m.php';
 
-	$this->setPageTitle('Výsledky testů');
-
-	$this->renderAdminTable(
-		'belbin_test',
+	$this->setPageTitle('Výsledky');
+	$fields = [
 		[
-			[
-				'name' => 'belbin_test_id',
-				'label' => 'ID'
-			],
-			[
-				'name' => 'belbin_test_start_date',
-				'label' => 'Start date',
-				'type' => 'datetime'
-			],
-			[
-				'name' => 'belbin_test_end_date',
-				'label' => 'End date',
-				'type' => 'datetime'
-			],
-			[
-				'name' => 'belbin_test_start_date',
-				'label' => 'Start date',
-				'type' => 'datetime'
-			],
-			[
-				'name' => 'belbin_test_end_date',
-				'label' => 'End date',
-				'type' => 'datetime'
-			],
-			[
-				'name' => 'belbin_test_duration',
-				'label' => 'Duration',
-				'type' => 'custom',
-				'custom_function' => 'TestModel::formatDurationSimple'
-			],
-			[
-				'name' => 'belbin_test_age',
-				'label' => 'Age'
-			],
-			[
-				'name' => 'belbin_test_sex',
-				'label' => 'Sex',
-				'type' => 'custom',
-				'custom_function' => 'TestModel::formatSexSimple'
-			]
+			'name' => 'belbin_test_id',
+			'label' => 'ID'
 		],
 		[
-			[
-				'name' => 'search_text',
-				'label' => 'Search',
-				'type' => 'text',
-				'filter_fields' => ['customer_name', 'customer_email', 'belbin_test_start_date']
-			]
+			'name' => 'belbin_test_start_date',
+			'label' => 'Start date',
+			'type' => 'datetime'
+		],
+		[
+			'name' => 'belbin_test_end_date',
+			'label' => 'End date',
+			'type' => 'datetime'
+		],
+		[
+			'name' => 'belbin_test_duration',
+			'label' => 'Duration',
+			'type' => 'custom',
+			'custom_function' => 'TestModel::formatDurationSimple'
+		],
+		[
+			'name' => 'belbin_test_age',
+			'label' => 'Age'
+		],
+		[
+			'name' => 'belbin_test_sex',
+			'label' => 'Sex',
+			'type' => 'custom',
+			'custom_function' => 'TestModel::formatSexSimple'
 		]
 	];
 
@@ -93,7 +71,7 @@
 
 	$default_paging = $this->z->tables->createPaging();
 	$default_paging->sorting_items = [
-		'default' => 'belbin_test_start_date DESC'
+		'default' => 'belbin_test_end_date DESC, belbin_test_start_date DESC'
 	];
 	$default_paging->active_sorting = 'default';
 
