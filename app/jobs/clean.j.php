@@ -6,8 +6,8 @@
 	$this->z->db->executeDeleteQuery(
 		'belbin_test',
 		'belbin_test_start_date <= ? and belbin_test_end_date is null',
-		[z::mysqlTimestamp($deadline)],
-		[PDO::PARAM_INT]
+		[z::mysqlDatetime($deadline)],
+		[PDO::PARAM_STR]
 	);
 
 	// load expired sessions
@@ -17,8 +17,8 @@
 		'user_session_expires <= ?', 	/* where */
 		null, 												/* orderby */
 		null, 												/* limit */
-		[z::mysqlTimestamp(time())], 	/* bindings */
-		[PDO::PARAM_INT] 							/* types */
+		[z::mysqlDatetime(time())], 	/* bindings */
+		[PDO::PARAM_STR] 							/* types */
 	);
 
 	foreach ($sessions as $session) {
