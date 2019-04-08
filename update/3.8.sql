@@ -1,5 +1,7 @@
 CREATE INDEX belbin_answer_role_index ON belbin_answer (belbin_answer_role_id);
-CREATE INDEX belbin_result_stats_index ON belbin_result (belbin_result_test_id, belbin_result_answer_id);
+CREATE INDEX belbin_result_answer_index ON belbin_result (belbin_result_answer_id);
+CREATE INDEX belbin_result_stats_index ON belbin_result (belbin_result_answer_id, belbin_result_test_id);
+CREATE INDEX belbin_result_test_index ON belbin_result (belbin_result_test_id);
 CREATE INDEX belbin_test_sex_index ON belbin_test (belbin_test_sex);
 CREATE INDEX belbin_test_age_index ON belbin_test (belbin_test_age);
 
