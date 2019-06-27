@@ -16,8 +16,7 @@
 		'modules' => ['resources', 'db', 'auth', 'i18n', 'admin'],
 
 		'includes' => [
-			['resources/favicon.ico', false, 'favicon', 'head'],
-			['resources/cover.css', false, 'link_css', 'head']
+			['resources/favicon.ico', false, 'favicon', 'head']
 		]
 
 	];
