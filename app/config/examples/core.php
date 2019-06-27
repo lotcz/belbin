@@ -2,10 +2,10 @@
 
 	return [
 
-		'site_title' => 'Belbinův test týmových rolí',
-		'site_description' => 'Online test týmových rolí podle Mereditha Belbina. Vyplnění testu zabere kolem 10-ti minut, je kompletně zdarma a bez nutnosti registrace.',
+		'site_title' => 'Test týmových rolí',
+		'site_description' => 'Stránka je offline.',
 		'site_author' => 'Karel Zavadil',
-		'site_keywords' => 'belbin, raymond belbin, raymond meredith belbin, belbinův test, belbinův test týmových rolí, on-line test týmových rolí, online test, tým, týmové role',
+		'site_keywords' => 'on-line test týmových rolí, tým, týmové role',
 
 		// will be used to create all link urls, no trailing slash
 		'base_url' => 'http://localhost/belbin/public',
